@@ -1,0 +1,1579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{b2d81f09-961f-4579-95a9-5e5db81bc94f}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b02cb73d-71ac-4181-b8c2-afb77a5157fb}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{64f4fb8f-9db7-41fc-b2ca-e4334bef57c0}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Source files\CORE">
+      <UniqueIdentifier>{d47ecb32-00d0-4594-a781-251325affc5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Startup">
+      <UniqueIdentifier>{453ea188-b5da-4519-a8dd-bd4dc6630a5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL">
+      <UniqueIdentifier>{472ffbd3-d7cc-4db2-a2b7-b4cb1cb858ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\COMMON">
+      <UniqueIdentifier>{25a42664-b7a8-4a32-bf28-cd8fdc5c40ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\DFSDM">
+      <UniqueIdentifier>{c094fb84-f546-4b79-a3f9-d7d4ae37b517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\DMA2D">
+      <UniqueIdentifier>{0ddf97fd-4c25-438f-827f-941be6ab539f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\NAND">
+      <UniqueIdentifier>{b7ec77f9-da7d-4318-8e25-00888e611919}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SPI">
+      <UniqueIdentifier>{c2ef2e07-2c89-4940-a4ba-b831016d298d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\FREERTOS">
+      <UniqueIdentifier>{8896808a-eb62-44eb-84cc-159d80d406dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\LWIP">
+      <UniqueIdentifier>{a40c1f28-c98b-4273-8c51-d68187de0935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SDIO">
+      <UniqueIdentifier>{bcb7e162-4350-49d3-bc53-646ec50bc41f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SD">
+      <UniqueIdentifier>{b75c8ea1-4314-4a0c-a820-508db715e591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\MPU">
+      <UniqueIdentifier>{7a7a59f9-81cc-41d4-b5d7-875427d97e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\DMA">
+      <UniqueIdentifier>{be0ddbdd-2eac-43f6-902c-0462553aa0b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\DSI">
+      <UniqueIdentifier>{cbc9efab-4ba3-4b4f-a5dd-e0aeb4a0f551}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\I2C">
+      <UniqueIdentifier>{3f17f323-4949-44b7-b51b-8b6ac94a03ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\FMC">
+      <UniqueIdentifier>{105b8896-8b36-4390-9ade-ed509c19df79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\MMC">
+      <UniqueIdentifier>{878b26a5-14a1-4e42-a9a7-8affdf8e961f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\LTDC">
+      <UniqueIdentifier>{922a1a8e-77a0-45d2-8042-853eb701fe09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\PWR">
+      <UniqueIdentifier>{3a5f68f0-9490-4df4-a86e-c959e411305f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SRAM">
+      <UniqueIdentifier>{9b33e0c0-78f2-4060-be90-8a145b559991}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\FLASH">
+      <UniqueIdentifier>{76ed5892-8e72-4c70-9c76-d3402d52474e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\GPIO">
+      <UniqueIdentifier>{11e6d169-5ce0-4d82-aab5-a32a5678f706}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\NOR">
+      <UniqueIdentifier>{5360f3ae-3899-4711-9b08-79d4fa76b62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\PCD">
+      <UniqueIdentifier>{304b02d0-9065-4732-985a-5da1de0378e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\RCC">
+      <UniqueIdentifier>{ceab586c-21a0-4b84-a496-30c3286be108}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\CORTEX">
+      <UniqueIdentifier>{7c23a856-553b-47b4-bd3c-994b879cf507}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\ETH">
+      <UniqueIdentifier>{ce556bb9-81fc-485a-8745-a2ac0397234a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\TIM">
+      <UniqueIdentifier>{8d0060fa-ccdb-43e4-9fd6-97019526c193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SAI">
+      <UniqueIdentifier>{e5e6243c-a878-48d6-965a-e0e37b5ad4e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\SDRAM">
+      <UniqueIdentifier>{3967c110-90c4-4df6-b99b-9c4375f14bd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\QSPI">
+      <UniqueIdentifier>{56043e1f-33e9-4abe-a269-5f3714e22a40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\STM32Cube HAL\FATFS">
+      <UniqueIdentifier>{66a68dfd-7b54-4a24-a30d-86478b3c5eee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{430172e5-15bf-46d4-95c7-3a4dd0aa2bb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\CORE">
+      <UniqueIdentifier>{6310816f-3f34-4895-b194-d87c5a433adf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Startup">
+      <UniqueIdentifier>{9a490bc7-d563-42f8-8f46-fe1c70140d5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL">
+      <UniqueIdentifier>{6764e548-2dda-4f8d-a022-a4e4a7b31db6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\COMMON">
+      <UniqueIdentifier>{caa9078c-b288-49fb-98d1-191e0ac65fb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\DFSDM">
+      <UniqueIdentifier>{fd20178f-b146-4583-97c8-8695133fc4a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\DMA2D">
+      <UniqueIdentifier>{24461e39-3371-4222-9afb-70995fd8dcf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\NAND">
+      <UniqueIdentifier>{c40ef9ac-505f-4a28-b2cf-10a0571c6517}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SPI">
+      <UniqueIdentifier>{d8c171b5-fe7b-4f34-815e-4ebee5fbf3ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\FREERTOS">
+      <UniqueIdentifier>{dcf7a4be-d68f-47da-8405-db14a4fe4484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\LWIP">
+      <UniqueIdentifier>{c194505e-7193-4149-ab9d-7059e8d753fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SDIO">
+      <UniqueIdentifier>{469b1b5e-dba6-41b1-8c0e-0c35f463a0b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SD">
+      <UniqueIdentifier>{4ca9e96b-a96a-4837-a4d0-908cab9e814d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\MPU">
+      <UniqueIdentifier>{2f425f0d-60a6-4602-a37b-224671341a99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\DMA">
+      <UniqueIdentifier>{e887415f-17b1-4d62-bc1a-42f58d2b9a4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\DSI">
+      <UniqueIdentifier>{39e2c6d5-ddd4-4769-bc1e-b53c4b0d68db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\I2C">
+      <UniqueIdentifier>{9ffef60d-3867-4b58-ae33-3ebc2a6ed9cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\FMC">
+      <UniqueIdentifier>{6f0a94ea-ec3a-432c-84b9-961933961aae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\MMC">
+      <UniqueIdentifier>{14a8ad5a-87c3-4a3d-8b45-ffe72a7bf4c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\LTDC">
+      <UniqueIdentifier>{a282abb0-07e4-463e-8fec-a67d7660a3b1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\PWR">
+      <UniqueIdentifier>{20420d16-95f3-484a-abdb-a3458745e9a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SRAM">
+      <UniqueIdentifier>{6c118cca-e7d4-4963-a57e-9a0e5b613841}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\FLASH">
+      <UniqueIdentifier>{f8937290-0407-4c2e-94df-c0286e18b09f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\GPIO">
+      <UniqueIdentifier>{0ec71797-029b-478c-b7dc-194c4335aba9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\NOR">
+      <UniqueIdentifier>{9b99eaf4-64e8-4db7-9546-47f971eca171}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\PCD">
+      <UniqueIdentifier>{af3d5825-b6f0-459a-ace7-f669df6425f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\RCC">
+      <UniqueIdentifier>{66fe72de-3d1b-4961-a060-8a068192fffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\CORTEX">
+      <UniqueIdentifier>{f1dc733a-9f7a-4996-b595-8a3cb43b4f32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\ETH">
+      <UniqueIdentifier>{6319cd88-8e81-4dc2-81ae-acd3c707422d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\TIM">
+      <UniqueIdentifier>{2440d912-c059-4224-ae7f-3d1074d2ccc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SAI">
+      <UniqueIdentifier>{8e449651-b4ca-46fd-afc0-6b78624b18e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\SDRAM">
+      <UniqueIdentifier>{c11b287a-7ae9-48f8-8e19-77c0796675ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\QSPI">
+      <UniqueIdentifier>{22de58db-2b93-4036-b29b-0fec8d217ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\STM32Cube HAL\FATFS">
+      <UniqueIdentifier>{feae8c29-d377-40d9-956a-e0811181ea31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{6bbf31f8-56c8-4c91-bbeb-47123dfb04c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{a54e99cf-1eaf-4429-950e-20e7f7a7372d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP">
+      <UniqueIdentifier>{c91092d1-f75f-42df-9791-ba3e8e79a668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components">
+      <UniqueIdentifier>{fae4e943-524d-4df5-9b6b-17daf9c1ae41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\adv7533">
+      <UniqueIdentifier>{5b228a5b-e67e-4f5e-b888-fdc556cd48ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ampire480272">
+      <UniqueIdentifier>{1d4c51a5-49f8-4936-9212-d13045f8b402}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ampire640480">
+      <UniqueIdentifier>{746a6b95-2a9f-4df6-ae00-8baf5a8fb4bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\Common">
+      <UniqueIdentifier>{76d0d9e0-a128-4d62-8af1-e6475f6440d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\exc7200">
+      <UniqueIdentifier>{e4b68382-0948-4464-b2f5-12a3f325524b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ft5336">
+      <UniqueIdentifier>{1be0eab5-2b5b-44cb-bae4-901f42c0179d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ft6x06">
+      <UniqueIdentifier>{61c2d29d-d14c-4db0-b2d3-aa5c6fb9d2eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\mfxstm32l152">
+      <UniqueIdentifier>{6a582bfa-638e-4148-8c5d-b77ee23d75d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\mx25l512">
+      <UniqueIdentifier>{4e3d3cf6-a94a-4ba4-b20e-4d0f9d716e1e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\n25q128a">
+      <UniqueIdentifier>{6c4f8b83-8827-4b13-8638-8adf82125f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\n25q512a">
+      <UniqueIdentifier>{510e83c9-d412-4a48-88d2-8dd85c20f749}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\otm8009a">
+      <UniqueIdentifier>{53353860-99e4-4458-8128-9f61e055fc20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ov9655">
+      <UniqueIdentifier>{c27861e7-7da4-4594-a297-0e254d971bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\rk043fn48h">
+      <UniqueIdentifier>{0f748e41-42ab-4094-bf1b-5902e76888dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\s5k5cag">
+      <UniqueIdentifier>{bfff890e-f2b5-4397-968a-347209f3079c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\st7735">
+      <UniqueIdentifier>{2ddba34a-1e8b-473e-9379-1054a77f5099}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\st7789h2">
+      <UniqueIdentifier>{ec1fbf1c-a910-432f-8653-8a3d02652269}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\stmpe811">
+      <UniqueIdentifier>{0582ebad-942b-4a27-8563-c487f42ba0d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\ts3510">
+      <UniqueIdentifier>{55302935-2de2-451e-ab29-8fb2883b6f86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\Components\wm8994">
+      <UniqueIdentifier>{5bc1c797-86ad-430b-9c8c-121c258201e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\BSP\STM32F769I-Discovery">
+      <UniqueIdentifier>{591e07b3-8228-407e-bee7-ec089b88291f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP">
+      <UniqueIdentifier>{8970f141-5621-4086-90f2-d160bd61c711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components">
+      <UniqueIdentifier>{d7f80541-2807-419f-919c-2c4b8398686d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\adv7533">
+      <UniqueIdentifier>{7e4f9702-09d7-4428-995b-f0785a3ead18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ampire480272">
+      <UniqueIdentifier>{6dfffa21-7619-468c-8221-03f3407ee778}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ampire640480">
+      <UniqueIdentifier>{0ad21dea-0893-4757-bb66-5a586d6a87c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\Common">
+      <UniqueIdentifier>{5b05bcda-8aca-4085-9a80-13174e61361b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\exc7200">
+      <UniqueIdentifier>{7d908929-824c-42e2-9f49-d408f6fbda52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ft5336">
+      <UniqueIdentifier>{df81fc20-5eca-4879-8347-ddb4c91d63ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ft6x06">
+      <UniqueIdentifier>{84bf3f0c-9d1c-4ebf-ab16-4a956b7e1e54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\mfxstm32l152">
+      <UniqueIdentifier>{64d11f41-5a98-4f50-b7a1-d8a9312bb8e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\mx25l512">
+      <UniqueIdentifier>{ff982a98-dd38-4ba3-bc36-327d5f74177a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\n25q128a">
+      <UniqueIdentifier>{69d03526-7bb8-4ad0-82a4-5ab6fabe9f8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\n25q512a">
+      <UniqueIdentifier>{c94637be-6226-45a3-b2b7-bb3bc794d0e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\otm8009a">
+      <UniqueIdentifier>{3405cb38-25ba-4dcc-bacf-d1b05e0e592e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ov9655">
+      <UniqueIdentifier>{8eb0c7c9-1b33-4abd-bff1-0099d4df99e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\rk043fn48h">
+      <UniqueIdentifier>{6b4a3672-3714-45ff-81ab-c9ed6aed99a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\s5k5cag">
+      <UniqueIdentifier>{3ed3fe87-753c-4d58-94f2-ccc4c4949d1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\st7735">
+      <UniqueIdentifier>{4a299b11-f8e9-47a8-a152-c068767d0ae8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\st7789h2">
+      <UniqueIdentifier>{571f8ed2-a58d-479b-90ce-df9de6b69d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\stmpe811">
+      <UniqueIdentifier>{2f456f87-e93e-4e19-9a2f-bf6691935a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\ts3510">
+      <UniqueIdentifier>{980ab216-0e26-4a21-b130-3f31c5136bcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\Components\wm8994">
+      <UniqueIdentifier>{1618e460-aeed-4202-8947-d607db265ce3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\BSP\STM32F769I-Discovery">
+      <UniqueIdentifier>{21fa778c-8fbc-4082-96e7-848b82885ca5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Utilities">
+      <UniqueIdentifier>{b7cbc5b9-e938-4e73-8c0d-81305efb7169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Utilities\Log">
+      <UniqueIdentifier>{0847c04e-2ca5-4990-8a7d-c455b698d306}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Utilities">
+      <UniqueIdentifier>{ea7c30e5-4113-439c-a34f-ea210fb00e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Utilities\Log">
+      <UniqueIdentifier>{6b05aec2-f579-40ef-93ed-9418c7937f93}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\Src\gpio.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\dfsdm.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\dma.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\dma2d.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\dsihost.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\bsp_driver_sd.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\sd_diskio.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\fatfs.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\fmc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\freertos.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\i2c.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ltdc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\lwip.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\ethernetif.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\quadspi.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\sai.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\sdmmc.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\spi.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\usb_otg.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\stm32f7xx_it.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\stm32f7xx_hal_msp.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\stm32f7xx_hal_timebase_TIM.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\main.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Source\Templates\system_stm32f7xx.c">
+      <Filter>Source files\Startup</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c">
+      <Filter>Source files\STM32Cube HAL\COMMON</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dfsdm.c">
+      <Filter>Source files\STM32Cube HAL\DFSDM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma2d.c">
+      <Filter>Source files\STM32Cube HAL\DMA2D</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_fmc.c">
+      <Filter>Source files\STM32Cube HAL\NAND</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_spi.c">
+      <Filter>Source files\STM32Cube HAL\SPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\croutine.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\list.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\queue.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\tasks.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\timers.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1\port.c">
+      <Filter>Source files\STM32Cube HAL\FREERTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\api_lib.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\api_msg.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\err.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\netbuf.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\netdb.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\netifapi.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\sockets.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\api\tcpip.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\def.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\dns.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\inet_chksum.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\init.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ip.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\mem.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\memp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\netif.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\pbuf.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\raw.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\stats.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\sys.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\tcp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\tcp_in.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\tcp_out.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\timeouts.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\udp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\autoip.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\dhcp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\etharp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\icmp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\igmp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4_addr.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv4\ip4_frag.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\dhcp6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\ethip6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\icmp6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\inet6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6_addr.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\ip6_frag.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\mld6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\core\ipv6\nd6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\auth.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\ccp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap_ms.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap-md5.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\chap-new.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\demand.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\eap.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\eui64.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\fsm.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\ipcp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\ipv6cp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\lcp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\magic.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\mppe.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\multilink.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\ppp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppapi.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppcrypt.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppoe.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppol2tp.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\pppos.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\upap.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\utils.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ppp\vj.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\ethernet.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\slipif.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\netif\lowpan6.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\system\OS\sys_arch.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_sdmmc.c">
+      <Filter>Source files\STM32Cube HAL\SDIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sd.c">
+      <Filter>Source files\STM32Cube HAL\SD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_cortex.c">
+      <Filter>Source files\STM32Cube HAL\MPU</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma.c">
+      <Filter>Source files\STM32Cube HAL\DMA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dma_ex.c">
+      <Filter>Source files\STM32Cube HAL\DMA</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_dsi.c">
+      <Filter>Source files\STM32Cube HAL\DSI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c.c">
+      <Filter>Source files\STM32Cube HAL\I2C</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_i2c_ex.c">
+      <Filter>Source files\STM32Cube HAL\I2C</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc.c">
+      <Filter>Source files\STM32Cube HAL\LTDC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_ltdc_ex.c">
+      <Filter>Source files\STM32Cube HAL\LTDC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr.c">
+      <Filter>Source files\STM32Cube HAL\PWR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pwr_ex.c">
+      <Filter>Source files\STM32Cube HAL\PWR</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_flash.c">
+      <Filter>Source files\STM32Cube HAL\FLASH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_flash_ex.c">
+      <Filter>Source files\STM32Cube HAL\FLASH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c">
+      <Filter>Source files\STM32Cube HAL\GPIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd.c">
+      <Filter>Source files\STM32Cube HAL\PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd_ex.c">
+      <Filter>Source files\STM32Cube HAL\PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_usb.c">
+      <Filter>Source files\STM32Cube HAL\PCD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c">
+      <Filter>Source files\STM32Cube HAL\RCC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c">
+      <Filter>Source files\STM32Cube HAL\RCC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_eth.c">
+      <Filter>Source files\STM32Cube HAL\ETH</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim.c">
+      <Filter>Source files\STM32Cube HAL\TIM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim_ex.c">
+      <Filter>Source files\STM32Cube HAL\TIM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sai.c">
+      <Filter>Source files\STM32Cube HAL\SAI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sai_ex.c">
+      <Filter>Source files\STM32Cube HAL\SAI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_sdram.c">
+      <Filter>Source files\STM32Cube HAL\SDRAM</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_qspi.c">
+      <Filter>Source files\STM32Cube HAL\QSPI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FatFs\src\diskio.c">
+      <Filter>Source files\STM32Cube HAL\FATFS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FatFs\src\ff.c">
+      <Filter>Source files\STM32Cube HAL\FATFS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c">
+      <Filter>Source files\STM32Cube HAL\FATFS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\FatFs\src\option\syscall.c">
+      <Filter>Source files\STM32Cube HAL\FATFS</Filter>
+    </ClCompile>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <ClCompile Include="$(BSP_ROOT)\STM32F7xxxx\StartupFiles\startup_stm32f769xx.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Inc\gpio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\dfsdm.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\dma.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\dma2d.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\dsihost.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\ffconf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\bsp_driver_sd.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\sd_diskio.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\fatfs.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\fmc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\FreeRTOSConfig.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\i2c.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\ltdc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\lwip.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\lwipopts.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\ethernetif.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\quadspi.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\sai.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\sdmmc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\spi.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\usb_otg.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\stm32f7xx_it.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\stm32f7xx_hal_conf.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Inc\main.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\CMSIS\Include\core_cm7.h">
+      <Filter>Header files\CORE</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\stm32f7xx.h">
+      <Filter>Header files\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include\system_stm32f7xx.h">
+      <Filter>Header files\Startup</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal.h">
+      <Filter>Header files\STM32Cube HAL\COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_def.h">
+      <Filter>Header files\STM32Cube HAL\COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h">
+      <Filter>Header files\STM32Cube HAL\COMMON</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dfsdm.h">
+      <Filter>Header files\STM32Cube HAL\DFSDM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma2d.h">
+      <Filter>Header files\STM32Cube HAL\DMA2D</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_fmc.h">
+      <Filter>Header files\STM32Cube HAL\NAND</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_spi.h">
+      <Filter>Header files\STM32Cube HAL\SPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\croutine.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\deprecated_definitions.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\event_groups.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOSConfig_template.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_prototypes.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\StackMacros.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1\portmacro.h">
+      <Filter>Header files\STM32Cube HAL\FREERTOS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\api.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\arch.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\autoip.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\debug.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\def.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\dhcp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\dhcp6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\dns.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\err.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\posix\errno.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\etharp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ethip6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\icmp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\icmp6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\igmp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\inet.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\inet_chksum.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\init.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip4.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ip4_addr.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ip4_frag.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\ip6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ip6_addr.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ip6_frag.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\ip_addr.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\mem.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\memp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\mld6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\nd6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\netbuf.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\posix\netdb.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\netif.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\netifapi.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\opt.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\pbuf.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\raw.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\sio.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\sockets.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\stats.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\sys.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\tcp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\tcpip.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\timeouts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot\udp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\fs.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\httpd.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\httpd_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\lwiperf.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mdns_priv.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\netbiosns.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\netbiosns_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmpv3.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_core.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_mib2.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_scalar.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_table.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\snmp_threadsync.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\sntp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\sntp_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\tftp_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\tftp_server.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\api_msg.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\memp_priv.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\memp_std.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\tcpip_priv.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\tcp_priv.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ethernet.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\lowpan6.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\lowpan6_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\slipif.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ccp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap_ms.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap-md5.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\chap-new.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\eap.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\eui64.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\fsm.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ipcp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ipv6cp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\lcp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\magic.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\mppe.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp_impl.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\ppp_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppapi.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppcrypt.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppdebug.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppoe.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppol2tp.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\pppos.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\upap.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp\vj.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys\socket.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\bpstruct.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\cc.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\cpu.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\epstruct.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\lib.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\perf.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\system\arch\sys_arch.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_sdmmc.h">
+      <Filter>Header files\STM32Cube HAL\SDIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sd.h">
+      <Filter>Header files\STM32Cube HAL\SD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_cortex.h">
+      <Filter>Header files\STM32Cube HAL\MPU</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma.h">
+      <Filter>Header files\STM32Cube HAL\DMA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dma_ex.h">
+      <Filter>Header files\STM32Cube HAL\DMA</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_dsi.h">
+      <Filter>Header files\STM32Cube HAL\DSI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c.h">
+      <Filter>Header files\STM32Cube HAL\I2C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_i2c_ex.h">
+      <Filter>Header files\STM32Cube HAL\I2C</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc.h">
+      <Filter>Header files\STM32Cube HAL\LTDC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_ltdc_ex.h">
+      <Filter>Header files\STM32Cube HAL\LTDC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr.h">
+      <Filter>Header files\STM32Cube HAL\PWR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pwr_ex.h">
+      <Filter>Header files\STM32Cube HAL\PWR</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash.h">
+      <Filter>Header files\STM32Cube HAL\FLASH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h">
+      <Filter>Header files\STM32Cube HAL\FLASH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h">
+      <Filter>Header files\STM32Cube HAL\GPIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h">
+      <Filter>Header files\STM32Cube HAL\GPIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h">
+      <Filter>Header files\STM32Cube HAL\PCD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h">
+      <Filter>Header files\STM32Cube HAL\PCD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h">
+      <Filter>Header files\STM32Cube HAL\PCD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h">
+      <Filter>Header files\STM32Cube HAL\RCC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h">
+      <Filter>Header files\STM32Cube HAL\RCC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_eth.h">
+      <Filter>Header files\STM32Cube HAL\ETH</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_tim.h">
+      <Filter>Header files\STM32Cube HAL\TIM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_tim_ex.h">
+      <Filter>Header files\STM32Cube HAL\TIM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sai.h">
+      <Filter>Header files\STM32Cube HAL\SAI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sai_ex.h">
+      <Filter>Header files\STM32Cube HAL\SAI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_sdram.h">
+      <Filter>Header files\STM32Cube HAL\SDRAM</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_qspi.h">
+      <Filter>Header files\STM32Cube HAL\QSPI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FatFs\src\diskio.h">
+      <Filter>Header files\STM32Cube HAL\FATFS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FatFs\src\ff.h">
+      <Filter>Header files\STM32Cube HAL\FATFS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FatFs\src\ffconf_template.h">
+      <Filter>Header files\STM32Cube HAL\FATFS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.h">
+      <Filter>Header files\STM32Cube HAL\FATFS</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\FatFs\src\integer.h">
+      <Filter>Header files\STM32Cube HAL\FATFS</Filter>
+    </ClInclude>
+    <None Include="VisualStudio-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="VisualStudio-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <ClCompile Include="..\..\Drivers\BSP\Components\adv7533\adv7533.c">
+      <Filter>Source files\Device-specific files\BSP\Components\adv7533</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\exc7200\exc7200.c">
+      <Filter>Source files\Device-specific files\BSP\Components\exc7200</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\ft5336\ft5336.c">
+      <Filter>Source files\Device-specific files\BSP\Components\ft5336</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\ft6x06\ft6x06.c">
+      <Filter>Source files\Device-specific files\BSP\Components\ft6x06</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\mfxstm32l152\mfxstm32l152.c">
+      <Filter>Source files\Device-specific files\BSP\Components\mfxstm32l152</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\otm8009a\otm8009a.c">
+      <Filter>Source files\Device-specific files\BSP\Components\otm8009a</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\ov9655\ov9655.c">
+      <Filter>Source files\Device-specific files\BSP\Components\ov9655</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\s5k5cag\s5k5cag.c">
+      <Filter>Source files\Device-specific files\BSP\Components\s5k5cag</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\st7735\st7735.c">
+      <Filter>Source files\Device-specific files\BSP\Components\st7735</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\st7789h2\st7789h2.c">
+      <Filter>Source files\Device-specific files\BSP\Components\st7789h2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\stmpe811\stmpe811.c">
+      <Filter>Source files\Device-specific files\BSP\Components\stmpe811</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\ts3510\ts3510.c">
+      <Filter>Source files\Device-specific files\BSP\Components\ts3510</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\Components\wm8994\wm8994.c">
+      <Filter>Source files\Device-specific files\BSP\Components\wm8994</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_audio.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_eeprom.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_lcd.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_qspi.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_sdram.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_ts.c">
+      <Filter>Source files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Drivers\BSP\Components\adv7533\adv7533.h">
+      <Filter>Header files\Device-specific files\BSP\Components\adv7533</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ampire480272\ampire480272.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ampire480272</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ampire640480\ampire640480.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ampire640480</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\accelero.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\audio.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\camera.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\epd.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\gyro.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\idd.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\io.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\lcd.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\magneto.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\ts.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\Common\tsensor.h">
+      <Filter>Header files\Device-specific files\BSP\Components\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\exc7200\exc7200.h">
+      <Filter>Header files\Device-specific files\BSP\Components\exc7200</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ft5336\ft5336.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ft5336</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ft6x06\ft6x06.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ft6x06</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\mfxstm32l152\mfxstm32l152.h">
+      <Filter>Header files\Device-specific files\BSP\Components\mfxstm32l152</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\mx25l512\mx25l512.h">
+      <Filter>Header files\Device-specific files\BSP\Components\mx25l512</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\n25q128a\n25q128a.h">
+      <Filter>Header files\Device-specific files\BSP\Components\n25q128a</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\n25q512a\n25q512a.h">
+      <Filter>Header files\Device-specific files\BSP\Components\n25q512a</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\otm8009a\otm8009a.h">
+      <Filter>Header files\Device-specific files\BSP\Components\otm8009a</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ov9655\ov9655.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ov9655</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\rk043fn48h\rk043fn48h.h">
+      <Filter>Header files\Device-specific files\BSP\Components\rk043fn48h</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\s5k5cag\s5k5cag.h">
+      <Filter>Header files\Device-specific files\BSP\Components\s5k5cag</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\st7735\st7735.h">
+      <Filter>Header files\Device-specific files\BSP\Components\st7735</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\st7789h2\st7789h2.h">
+      <Filter>Header files\Device-specific files\BSP\Components\st7789h2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\stmpe811\stmpe811.h">
+      <Filter>Header files\Device-specific files\BSP\Components\stmpe811</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\ts3510\ts3510.h">
+      <Filter>Header files\Device-specific files\BSP\Components\ts3510</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\Components\wm8994\wm8994.h">
+      <Filter>Header files\Device-specific files\BSP\Components\wm8994</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_audio.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_eeprom.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_lcd.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_qspi.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_sdram.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Drivers\BSP\STM32F769I-Discovery\stm32f769i_discovery_ts.h">
+      <Filter>Header files\Device-specific files\BSP\STM32F769I-Discovery</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Utilities\Log\lcd_log.c">
+      <Filter>Source files\Utilities\Log</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Utilities\Log\lcd_log.h">
+      <Filter>Header files\Utilities\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utilities\Log\lcd_log_conf.h">
+      <Filter>Header files\Utilities\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Utilities\Log\lcd_log_conf_template.h">
+      <Filter>Header files\Utilities\Log</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Src\fatfs_platform.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Inc\fatfs_platform.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\apps\mqtt\mqtt.c">
+      <Filter>Source files\STM32Cube HAL\LWIP</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt_opts.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\nd6_priv.h">
+      <Filter>Header files\STM32Cube HAL\LWIP</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
