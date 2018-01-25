@@ -41,16 +41,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../Drivers/BSP/STM32F769I-Discovery;../../Drivers/BSP/Components/ft6x06;../../Drivers/BSP/Components/otm8009a;../../Drivers/BSP/Components/wm8994;../../Utilities/Log;..\..\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc;..\..\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;..\..\Middlewares\Third_Party\LwIP\src\include;..\..\Middlewares\Third_Party\LwIP\src\include\lwip;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot;..\..\Middlewares\Third_Party\LwIP\src\include\netif;..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp;..\..\Middlewares\Third_Party\LwIP\src\include\posix;..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys;..\..\Middlewares\Third_Party\LwIP\system;..\..\Middlewares\Third_Party\LwIP\system\arch;..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;..\..\Middlewares\Third_Party\FatFs\src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Drivers/BSP/STM32F769I-Discovery;../../Drivers/BSP/Components/ft6x06;../../Drivers/BSP/Components/otm8009a;../../Drivers/BSP/Components/wm8994;../../Utilities/Log;..\..\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc;..\..\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;..\..\Middlewares\Third_Party\LwIP\src\include;..\..\Middlewares\Third_Party\LwIP\src\include\lwip;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot;..\..\Middlewares\Third_Party\LwIP\src\include\netif;..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp;..\..\Middlewares\Third_Party\LwIP\src\include\posix;..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys;..\..\Middlewares\Third_Party\LwIP\system;..\..\Middlewares\Third_Party\LwIP\system\arch;..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;..\..\Middlewares\Third_Party\FatFs\src;../../Middlewares/Third_Party/mqtt;../../Middlewares/Third_Party/mqtt/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LWIP_TIMEVAL_PRIVATE=0;DEBUG=1;USE_LCD;flash_layout;STM32F769xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <AdditionalOptions />
       <LinkerScript />
     </Link>
@@ -477,5 +477,26 @@
     <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt_opts.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\nd6_priv.h" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\cJSON.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\transport.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTConnectClient.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTConnectServer.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTDeserializePublish.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTFormat.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTPacket.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTSerializePublish.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTSubscribeClient.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTSubscribeServer.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTUnsubscribeClient.c" />
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTUnsubscribeServer.c" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\cJSON.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\transport.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTConnect.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTFormat.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTPacket.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTPublish.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTSubscribe.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTUnsubscribe.h" />
+    <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\StackTrace.h" />
   </ItemGroup>
 </Project>

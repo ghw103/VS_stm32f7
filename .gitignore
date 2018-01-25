@@ -50,3 +50,8 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+/VisualStudio/.vs/VisualStudio/v15
+/VisualStudio/VisualGDB/Debug/CodeDB/VisualStudio
+/VisualStudio/VisualGDB/Debug
+/VisualStudio/VisualStudio/VisualGDB/Debug
+/VisualStudio/VisualStudio/VisualGDB/VisualGDBCache/VisualStudio-Debug
