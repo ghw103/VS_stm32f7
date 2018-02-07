@@ -164,8 +164,6 @@ int main(void)
 	LCD_LOG_SetHeader((uint8_t *)"Webserver Application Netconn API");
 //	LCD_LOG_SetFooter((uint8_t *)"STM32F769I-DISCO board");
 	printf((char *)"  State: Ethernet Initialization ...\n");
-	// HAL_Delay(1000);
-//	MX_LWIP_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

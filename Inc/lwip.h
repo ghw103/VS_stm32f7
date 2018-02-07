@@ -94,7 +94,7 @@ extern	 struct netif gnetif;
 #define DEST_IP_ADDR2   (uint8_t)74
 #define DEST_IP_ADDR3   (uint8_t)155
 
-#define DEST_PORT       (uint16_t)1992
+#define DEST_PORT       (uint16_t)1993
 /* USER CODE END 0 */
 
 /* Global Variables ----------------------------------------------------------*/

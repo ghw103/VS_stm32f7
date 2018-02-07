@@ -53,14 +53,14 @@
 
 /* USER CODE BEGIN Includes */     
 #include "stm32f7xx_hal.h"
-#include "lwip.h"
 #include  "lcd_log.h"
-//#include "tcp_echoclient.h"
 #include "timeouts.h"
 
+#include "lwip.h"
 #include "lwip/sys.h"
 #include "lwip/api.h"
 #include "lwip/opt.h"
+#include "dns.h"
 
 #include "adc.h"
 /* USER CODE END Includes */
@@ -294,9 +294,16 @@ void TCP_client_Task(void const * argument)
   /* Infinite loop */
 	struct netconn *Netconn;
 	err_t err;
-	ip_addr_t DestIPaddr, ipaddr;
-	IP4_ADDR(&DestIPaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
+	ip_addr_t DestIPaddr;
 	LWIP_UNUSED_ARG(argument);
+	const char hostname[] = "things.ubidots.com";
+	err = netconn_gethostbyname(hostname, &DestIPaddr);
+#ifdef USE_LCD  
+	uint8_t iptxt[20];
+	sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&DestIPaddr));
+	printf("Static IP address: %s\n", iptxt);  
+#endif
+	//IP4_ADDR(&DestIPaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
 	  /* Create a new connection identifier. */
 	Netconn = netconn_new(NETCONN_TCP);
 	if (Netconn != NULL)
@@ -306,7 +313,8 @@ void TCP_client_Task(void const * argument)
 		if (err == ERR_OK)
 		{
 			//设置连接地址
-			err = netconn_connect(Netconn, &DestIPaddr, DEST_PORT);
+		
+			err = netconn_connect(Netconn, &DestIPaddr, 1883);
 			for (;;)
 			{
 				if (err == ERR_OK)//连接成功
@@ -334,7 +342,7 @@ void TCP_client_Task(void const * argument)
 						err = netconn_bind(Netconn, NULL, DEST_PORT);
 						if (err == ERR_OK)
 						{
-							err = netconn_connect(Netconn, &DestIPaddr, DEST_PORT);
+							err = netconn_connect(Netconn, &DestIPaddr, 1883);
 						}
 					}
 				}
