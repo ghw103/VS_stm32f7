@@ -45,7 +45,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\..\stm32f7.gpdsc</RelativePath>
-        <Timestamp>131612582624338686</Timestamp>
+        <Timestamp>131624518935597439</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -95,6 +95,23 @@
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy\stm32_hal_legacy.h</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
+              <Name>ADC</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc.c</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc_ex.c</RelativePath>
                 </VirtualFileSnapshot>
               </Files>
             </VirtualDirectorySnapshot>
@@ -960,6 +977,20 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
+              <Name>UART</Name>
+              <Files>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h</RelativePath>
+                </VirtualFileSnapshot>
+                <VirtualFileSnapshot>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c</RelativePath>
+                </VirtualFileSnapshot>
+              </Files>
+            </VirtualDirectorySnapshot>
+            <VirtualDirectorySnapshot>
               <Name>PWR</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -1030,29 +1061,6 @@
               </Files>
             </VirtualDirectorySnapshot>
             <VirtualDirectorySnapshot>
-              <Name>PCD</Name>
-              <Files>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd_ex.c</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h</RelativePath>
-                </VirtualFileSnapshot>
-                <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_usb.c</RelativePath>
-                </VirtualFileSnapshot>
-              </Files>
-            </VirtualDirectorySnapshot>
-            <VirtualDirectorySnapshot>
               <Name>RCC</Name>
               <Files>
                 <VirtualFileSnapshot>
@@ -1098,10 +1106,10 @@
                   <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_tim.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim.c</RelativePath>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_tim_ex.h</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
-                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_tim_ex.h</RelativePath>
+                  <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim.c</RelativePath>
                 </VirtualFileSnapshot>
                 <VirtualFileSnapshot>
                   <RelativePath>..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_tim_ex.c</RelativePath>
@@ -1194,6 +1202,9 @@
           <RelativePath>..\..\Inc\gpio.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>..\..\Inc\adc.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>..\..\Inc\dfsdm.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
@@ -1254,6 +1265,12 @@
           <RelativePath>..\..\Inc\spi.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
+          <RelativePath>..\..\Inc\tim.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\..\Inc\usart.h</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
           <RelativePath>..\..\Inc\usb_otg.h</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
@@ -1267,6 +1284,9 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\..\Src\gpio.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\..\Src\adc.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\..\Src\dfsdm.c</RelativePath>
@@ -1324,6 +1344,12 @@
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\..\Src\spi.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\..\Src\tim.c</RelativePath>
+        </VirtualFileSnapshot>
+        <VirtualFileSnapshot>
+          <RelativePath>..\..\Src\usart.c</RelativePath>
         </VirtualFileSnapshot>
         <VirtualFileSnapshot>
           <RelativePath>..\..\Src\usb_otg.c</RelativePath>

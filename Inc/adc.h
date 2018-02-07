@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USB_OTG.h
+  * File Name          : ADC.h
   * Description        : This file provides code for the configuration
-  *                      of the USB_OTG instances.
+  *                      of the ADC instances.
   ******************************************************************************
   * This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -47,8 +47,8 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usb_otg_H
-#define __usb_otg_H
+#ifndef __adc_H
+#define __adc_H
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -61,13 +61,17 @@
 
 /* USER CODE END Includes */
 
+extern ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc3;
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
 extern void _Error_Handler(char *, int);
 
-void MX_USB_OTG_HS_USB_Init(void);
+void MX_ADC1_Init(void);
+void MX_ADC3_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -76,7 +80,7 @@ void MX_USB_OTG_HS_USB_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usb_otg_H */
+#endif /*__ adc_H */
 
 /**
   * @}

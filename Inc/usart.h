@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * File Name          : USB_OTG.h
+  * File Name          : USART.h
   * Description        : This file provides code for the configuration
-  *                      of the USB_OTG instances.
+  *                      of the USART instances.
   ******************************************************************************
   * This notice applies to any and all portions of this file
   * that are not between comment pairs USER CODE BEGIN and
@@ -47,8 +47,8 @@
   ******************************************************************************
   */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __usb_otg_H
-#define __usb_otg_H
+#ifndef __usart_H
+#define __usart_H
 #ifdef __cplusplus
  extern "C" {
 #endif
@@ -61,13 +61,19 @@
 
 /* USER CODE END Includes */
 
+extern UART_HandleTypeDef huart5;
+extern UART_HandleTypeDef huart1;
+extern UART_HandleTypeDef huart6;
+
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
 extern void _Error_Handler(char *, int);
 
-void MX_USB_OTG_HS_USB_Init(void);
+void MX_UART5_Init(void);
+void MX_USART1_UART_Init(void);
+void MX_USART6_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
@@ -76,7 +82,7 @@ void MX_USB_OTG_HS_USB_Init(void);
 #ifdef __cplusplus
 }
 #endif
-#endif /*__ usb_otg_H */
+#endif /*__ usart_H */
 
 /**
   * @}

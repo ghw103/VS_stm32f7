@@ -89,12 +89,12 @@ extern	 struct netif gnetif;
 #define GW_ADDR2   100
 #define GW_ADDR3   1
 
-#define DEST_IP_ADDR0   (uint8_t)192
-#define DEST_IP_ADDR1   (uint8_t)168
-#define DEST_IP_ADDR2   (uint8_t)100
-#define DEST_IP_ADDR3   (uint8_t)70
+#define DEST_IP_ADDR0   (uint8_t)207
+#define DEST_IP_ADDR1   (uint8_t)148
+#define DEST_IP_ADDR2   (uint8_t)74
+#define DEST_IP_ADDR3   (uint8_t)155
 
-#define DEST_PORT       (uint8_t)1992
+#define DEST_PORT       (uint16_t)1992
 /* USER CODE END 0 */
 
 /* Global Variables ----------------------------------------------------------*/

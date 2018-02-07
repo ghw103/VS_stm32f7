@@ -41,16 +41,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
-      <AdditionalIncludeDirectories>../../Drivers/BSP/STM32F769I-Discovery;../../Drivers/BSP/Components/ft6x06;../../Drivers/BSP/Components/otm8009a;../../Drivers/BSP/Components/wm8994;../../Utilities/Log;..\..\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc;..\..\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;..\..\Middlewares\Third_Party\LwIP\src\include;..\..\Middlewares\Third_Party\LwIP\src\include\lwip;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot;..\..\Middlewares\Third_Party\LwIP\src\include\netif;..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp;..\..\Middlewares\Third_Party\LwIP\src\include\posix;..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys;..\..\Middlewares\Third_Party\LwIP\system;..\..\Middlewares\Third_Party\LwIP\system\arch;..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;..\..\Middlewares\Third_Party\FatFs\src;../../Middlewares/Third_Party/mqtt;../../Middlewares/Third_Party/mqtt/src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>../../Drivers/BSP/STM32F769I-Discovery;../../Drivers/BSP/Components/ft6x06;../../Drivers/BSP/Components/otm8009a;../../Drivers/BSP/Components/wm8994;../../Utilities/Log;../../Middlewares/Third_Party/mqtt;../../Middlewares/Third_Party/mqtt/src;..\..\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc;..\..\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;..\..\Middlewares\Third_Party\LwIP\src\include;..\..\Middlewares\Third_Party\LwIP\src\include\lwip;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot;..\..\Middlewares\Third_Party\LwIP\src\include\netif;..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp;..\..\Middlewares\Third_Party\LwIP\src\include\posix;..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys;..\..\Middlewares\Third_Party\LwIP\system;..\..\Middlewares\Third_Party\LwIP\system\arch;..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;..\..\Middlewares\Third_Party\FatFs\src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>LWIP_TIMEVAL_PRIVATE=0;DEBUG=1;USE_LCD;flash_layout;STM32F769xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <AdditionalOptions />
       <LinkerScript />
     </Link>
@@ -199,9 +199,6 @@
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_flash.c" />
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_flash_ex.c" />
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_gpio.c" />
-    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd.c" />
-    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_pcd_ex.c" />
-    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_ll_usb.c" />
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc.c" />
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_rcc_ex.c" />
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_eth.c" />
@@ -390,9 +387,6 @@
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_flash_ex.h" />
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio.h" />
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_gpio_ex.h" />
-    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd.h" />
-    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_pcd_ex.h" />
-    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_ll_usb.h" />
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc.h" />
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_rcc_ex.h" />
     <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_eth.h" />
@@ -498,5 +492,18 @@
     <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTSubscribe.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTUnsubscribe.h" />
     <ClInclude Include="..\..\Middlewares\Third_Party\mqtt\src\StackTrace.h" />
+    <ClCompile Include="..\..\Src\adc.c" />
+    <ClCompile Include="..\..\Src\tim.c" />
+    <ClCompile Include="..\..\Src\usart.c" />
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc.c" />
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_adc_ex.c" />
+    <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal_uart.c" />
+    <ClInclude Include="..\..\Inc\adc.h" />
+    <ClInclude Include="..\..\Inc\tim.h" />
+    <ClInclude Include="..\..\Inc\usart.h" />
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc.h" />
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_adc_ex.h" />
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart.h" />
+    <ClInclude Include="..\..\Drivers\STM32F7xx_HAL_Driver\Inc\stm32f7xx_hal_uart_ex.h" />
   </ItemGroup>
 </Project>
