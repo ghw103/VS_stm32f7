@@ -424,6 +424,12 @@
     <Filter Include="Header files\STM32Cube HAL\FATFS">
       <UniqueIdentifier>{6bbb93c0-a1b2-4bc6-a4e6-9971bf55b0d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{38c49679-fe44-4e9a-9514-1f722d776ae4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{7a0bedb0-044d-463a-94d2-96bd48394158}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Drivers\STM32F7xx_HAL_Driver\Src\stm32f7xx_hal.c">
@@ -1440,22 +1446,10 @@
     <ClInclude Include="..\..\Utilities\Log\lcd_log_conf_template.h">
       <Filter>Header files\stm32 Resource\Utilities\Log</Filter>
     </ClInclude>
-    <ClCompile Include="..\..\Middlewares\Third_Party\LwIP\src\apps\mqtt\mqtt.c">
-      <Filter>Source files\中间件\LWIP</Filter>
-    </ClCompile>
-    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt.h">
-      <Filter>Header files\中间件\LWIP</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps\mqtt_opts.h">
-      <Filter>Header files\中间件\LWIP</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv\nd6_priv.h">
       <Filter>Header files\中间件\LWIP</Filter>
     </ClInclude>
     <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\cJSON.c">
-      <Filter>Source files\中间件\mqtt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\transport.c">
       <Filter>Source files\中间件\mqtt</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\src\MQTTConnectClient.c">
@@ -1618,6 +1612,12 @@
       <Filter>Source files\usr app</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Src\usart.c">
+      <Filter>Source files\usr app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\transport.c">
+      <Filter>Source files\中间件\mqtt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Src\syscalls.c">
       <Filter>Source files\usr app</Filter>
     </ClCompile>
   </ItemGroup>

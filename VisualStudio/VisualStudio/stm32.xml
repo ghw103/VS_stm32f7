@@ -26,7 +26,7 @@
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.toolchainoptions.arm.libnosys</Key>
-        <Value>--specs=rdimon.specs</Value>
+        <Value>--specs=nosys.specs</Value>
       </KeyValue>
     </Entries>
   </MCUProperties>
@@ -45,7 +45,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\..\stm32f7.gpdsc</RelativePath>
-        <Timestamp>131624569849360844</Timestamp>
+        <Timestamp>131626310081458368</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>

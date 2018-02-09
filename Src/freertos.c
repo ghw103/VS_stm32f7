@@ -63,6 +63,14 @@
 #include "dns.h"
 
 #include "adc.h"
+
+//#include "mqtt.h"
+#include "mqtt_opts.h"
+#include "transport.h"
+#include "MQTTPacket.h"
+#include "MQTTConnect.h"
+#include "MQTTPublish.h"
+#include "MQTTSubscribe.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -73,6 +81,9 @@ osThreadId TCPsever_TaskHandle;
 osThreadId UDPclient_TaskHandle;
 osThreadId LEDTaskHandle;
 osThreadId TempTaskHandle;
+osThreadId MQTT_subscribeTaskHandle;
+osThreadId MQTT_publishTaskHandle;
+osMessageQId tempQueueHandle;
 
 /* USER CODE BEGIN Variables */
 /* DHCP process states */
@@ -101,6 +112,8 @@ void TCP_sever_Task(void const * argument);
 void UDP_client_Task(void const * argument);
 void LED_Task(void const * argument);
 void Temp_Task(void const * argument);
+void MQTT_subscribe_Task(void const * argument);
+void MQTT_publish_Task(void const * argument);
 
 extern void MX_LWIP_Init(void);
 extern void MX_FATFS_Init(void);
@@ -137,12 +150,12 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of DHCPTask */
-//  osThreadDef(DHCPTask, DHCP_Task, osPriorityHigh, 0, 256);
-//  DHCPTaskHandle = osThreadCreate(osThread(DHCPTask), NULL);
-//
-//  /* definition and creation of TCPclient_Task */
-//  osThreadDef(TCPclient_Task, TCP_client_Task, osPriorityNormal, 0, 128);
-//  TCPclient_TaskHandle = osThreadCreate(osThread(TCPclient_Task), NULL);
+  osThreadDef(DHCPTask, DHCP_Task, osPriorityHigh, 0, 256);
+  DHCPTaskHandle = osThreadCreate(osThread(DHCPTask), NULL);
+
+  /* definition and creation of TCPclient_Task */
+  osThreadDef(TCPclient_Task, TCP_client_Task, osPriorityNormal, 0, 256);
+  TCPclient_TaskHandle = osThreadCreate(osThread(TCPclient_Task), NULL);
 
   /* definition and creation of TCPsever_Task */
   osThreadDef(TCPsever_Task, TCP_sever_Task, osPriorityNormal, 0, 128);
@@ -160,6 +173,14 @@ void MX_FREERTOS_Init(void) {
   osThreadDef(TempTask, Temp_Task, osPriorityBelowNormal, 0, 128);
   TempTaskHandle = osThreadCreate(osThread(TempTask), NULL);
 
+  /* definition and creation of MQTT_subscribeTask */
+  osThreadDef(MQTT_subscribeTask, MQTT_subscribe_Task, osPriorityAboveNormal, 0, 512);
+  MQTT_subscribeTaskHandle = osThreadCreate(osThread(MQTT_subscribeTask), NULL);
+
+  /* definition and creation of MQTT_publishTask */
+  osThreadDef(MQTT_publishTask, MQTT_publish_Task, osPriorityAboveNormal, 0, 512);
+  MQTT_publishTaskHandle = osThreadCreate(osThread(MQTT_publishTask), NULL);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 	  /* definition and creation of DHCPTask */
@@ -167,6 +188,11 @@ void MX_FREERTOS_Init(void) {
 //	DHCPTaskHandle = osThreadCreate(osThread(DHCPTask), &gnetif);
 
   /* USER CODE END RTOS_THREADS */
+
+  /* Create the queue(s) */
+  /* definition and creation of tempQueue */
+  osMessageQDef(tempQueue, 10, uint32_t);
+  tempQueueHandle = osMessageCreate(osMessageQ(tempQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -267,8 +293,11 @@ void DHCP_Task(void const * argument)
 		  break;
 	  case DHCP_ADDRESS_ASSIGNED:
 		   {
-			   osThreadDef(TCPclient_Task, TCP_client_Task, osPriorityNormal, 0, 256);
-			   TCPclient_TaskHandle = osThreadCreate(osThread(TCPclient_Task), NULL);
+			   
+			   osThreadDef(MQTT_publishTask, MQTT_publish_Task, osPriorityAboveNormal, 0, 512);
+			   MQTT_publishTaskHandle = osThreadCreate(osThread(MQTT_publishTask), NULL);
+//			   osThreadDef(TCPclient_Task, TCP_client_Task, osPriorityNormal, 0, 512);
+//			   TCPclient_TaskHandle = osThreadCreate(osThread(TCPclient_Task), NULL);
 			   BSP_LED_Off(LED_RED);
 			   vTaskDelete(NULL);  //删除本任务 
 		   }
@@ -292,18 +321,19 @@ void TCP_client_Task(void const * argument)
 {
   /* USER CODE BEGIN TCP_client_Task */
   /* Infinite loop */
+#define  BUFF_LEN     (256)
+	struct netbuf *txbuf;
+	uint8_t * rxbuf;
+	
+	void *data;
+	u16_t len;
+	uint8_t  TempBuff[BUFF_LEN] = "This message from tcp \r\n";
+	
 	struct netconn *Netconn;
 	err_t err;
 	ip_addr_t DestIPaddr;
 	LWIP_UNUSED_ARG(argument);
-	const char hostname[] = "things.ubidots.com";
-	err = netconn_gethostbyname(hostname, &DestIPaddr);
-#ifdef USE_LCD  
-	uint8_t iptxt[20];
-	sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&DestIPaddr));
-	printf("Static IP address: %s\n", iptxt);  
-#endif
-	//IP4_ADDR(&DestIPaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
+	IP4_ADDR(&DestIPaddr, DEST_IP_ADDR0, DEST_IP_ADDR1, DEST_IP_ADDR2, DEST_IP_ADDR3);
 	  /* Create a new connection identifier. */
 	Netconn = netconn_new(NETCONN_TCP);
 	if (Netconn != NULL)
@@ -314,21 +344,43 @@ void TCP_client_Task(void const * argument)
 		{
 			//设置连接地址
 		
-			err = netconn_connect(Netconn, &DestIPaddr, 1883);
+			err = netconn_connect(Netconn, &DestIPaddr, 1992);
 			for (;;)
 			{
 				if (err == ERR_OK)//连接成功
 				{
-					//					do 
-					//					{
-					//						netbuf_data(buf, &data, &len);
-					//						netconn_write(newconn, data, len, NETCONN_COPY);
-					//          
-					//					} while (netbuf_next(buf) >= 0);
-					//          
-					//					netbuf_delete(buf);
-										printf("ok\n");
-					osDelay(100);
+					printf("connet ok\n");
+//					txbuf = netbuf_new();
+//					
+//					netbuf_alloc(txbuf, BUFF_LEN);
+//					txbuf->p->payload = TempBuff;
+//					txbuf->p->len = strlen((const char*)TempBuff);
+					len = strlen((const char*)TempBuff);
+					netconn_write(Netconn, TempBuff, len, NETCONN_COPY);
+					
+					if (netconn_recv(Netconn, &rxbuf) == ERR_OK)
+					{
+						do 
+						{
+							netbuf_data(rxbuf, &data, &len);
+							netconn_write(Netconn, data, len, NETCONN_COPY);
+          
+						} while (netbuf_next(rxbuf) >= 0);
+          
+						netbuf_delete(rxbuf);
+					}
+					//netbuf_data(&TempBuff, &data, &len);
+//					do
+//					{
+//						err = netconn_write(Netconn, TempBuff, len, NETCONN_COPY);
+//
+//						if (err != ERR_OK)
+//						{
+//							break;
+//						}
+//					} while (netbuf_next(TempBuff) >= 0);
+//					//netbuf_delete(TempBuff);   
+					osDelay(1000);
 					
 				}
 				else
@@ -449,23 +501,80 @@ void Temp_Task(void const * argument)
   /* Infinite loop */
 	__IO int32_t ConvertedValue = 0;
 	int32_t JTemp = 0x0;
-	char desc[50];
+
 	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ConvertedValue, 1);
 	for (;;)
 	{
 		BSP_LED_On(LED_GREEN);
 		/* Compute the Junction Temperature value */
 		JTemp = ((((ConvertedValue * VREF) / MAX_CONVERTED_VALUE) - VSENS_AT_AMBIENT_TEMP) * 10 / AVG_SLOPE) + AMBIENT_TEMP;
-
-		/* Display the Temperature Value on the LCD */
-		sprintf(desc, "Internal Temperature is %ld degree C", JTemp);
-		BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize() / 2 + 45, (uint8_t *)desc, CENTER_MODE);
-		BSP_LCD_ClearStringLine(30);
+		xQueueSend(tempQueueHandle, (void *)&JTemp, (TickType_t) 10);
+	
 		BSP_LED_Off(LED_GREEN);
 		osDelay(2000);
 	
 	}
   /* USER CODE END Temp_Task */
+}
+
+/* MQTT_subscribe_Task function */
+void MQTT_subscribe_Task(void const * argument)
+{
+  /* USER CODE BEGIN MQTT_subscribe_Task */
+  /* Infinite loop */
+  for(;;)
+  {
+    osDelay(1);
+  }
+  /* USER CODE END MQTT_subscribe_Task */
+}
+
+/* MQTT_publish_Task function */
+void MQTT_publish_Task(void const * argument)
+{
+  /* USER CODE BEGIN MQTT_publish_Task */
+  /* Infinite loop */
+	MQTTString topicString = MQTTString_initializer;
+	
+	uint8_t buf[128];
+	int buflen = sizeof(buf);
+	uint8_t mysock = 0;
+	uint8_t rc= 0;
+	uint16_t len = 0;
+	int32_t Temp = 0x0;
+	char desc[50];
+	mqtt_client_connect();
+	printf("connet ok\n");
+  for(;;)
+  {
+	// 接收消息
+   // 参数 1 : 队列句柄
+   // 参数 2 ： 队列内容返回保存指针
+   // 参数 3 ： 允许阻塞时间
+   if(xQueueReceive(tempQueueHandle, &(Temp), (TickType_t)10))
+	  {
+		  if (Temp < 50&&Temp>20)
+		  {
+			  
+			  /* Display the Temperature Value on the LCD */
+			  sprintf(desc, "Internal Temperature is %ld degree C", Temp);
+		
+			  topicString.cstring = "temperaturesensor";
+			  len = MQTTSerialize_publish( buf, buflen,0, 0, 0, 0, topicString,(uint8_t *)desc, strlen(desc));
+
+			  rc = transport_sendPacketBuffer(mysock, buf, len);
+			  if (rc == len)
+				  printf("Successfully published\n");
+			  else
+				  printf("Publish failed\n");
+		
+			  BSP_LCD_DisplayStringAt(0, BSP_LCD_GetYSize() / 2 + 45, (uint8_t *)desc, CENTER_MODE);
+			  BSP_LCD_ClearStringLine(30);
+		  }
+	  }
+    osDelay(1);
+  }
+  /* USER CODE END MQTT_publish_Task */
 }
 
 /* USER CODE BEGIN Application */
