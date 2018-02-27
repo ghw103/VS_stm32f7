@@ -57,7 +57,7 @@
 #include "fatfs.h"
 #include "i2c.h"
 #include "ltdc.h"
-#include "lwip.h"
+#include "mbedtls.h"
 #include "quadspi.h"
 #include "sai.h"
 #include "sdmmc.h"

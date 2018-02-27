@@ -41,7 +41,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 
-#include "lcd_log_conf.h"
+#include "lcd_log_conf_template.h"
 
 /** @addtogroup Utilities
   * @{

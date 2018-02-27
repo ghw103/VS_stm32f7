@@ -74,7 +74,7 @@ extern	 struct netif gnetif;
 /*Static IP ADDRESS*/
 #define IP_ADDR0   192
 #define IP_ADDR1   168
-#define IP_ADDR2   100
+#define IP_ADDR2   1
 #define IP_ADDR3   50
    
 /*NETMASK*/
@@ -86,7 +86,7 @@ extern	 struct netif gnetif;
 /*Gateway Address*/
 #define GW_ADDR0   192
 #define GW_ADDR1   168
-#define GW_ADDR2   100
+#define GW_ADDR2   1
 #define GW_ADDR3   1
 
 #define DEST_IP_ADDR0   (uint8_t)207

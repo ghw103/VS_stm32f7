@@ -48,7 +48,7 @@
 
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32xxx_eval_lcd.h" /* replace 'stm32xxx' with your EVAL board name, ex: stm324x9i_eval_lcd.h */
+#include "stm32f769i_discovery_lcd.h" /* replace 'stm32xxx' with your EVAL board name, ex: stm324x9i_eval_lcd.h */
 #include <stdio.h>
 
 
@@ -83,9 +83,9 @@
 
 /* Define the cache depth */
 #define     CACHE_SIZE              100
-#define     YWINDOW_SIZE            17
+#define     YWINDOW_SIZE            35
 
-#if (YWINDOW_SIZE > 17)
+#if (YWINDOW_SIZE > 35)
   #error "Wrong YWINDOW SIZE"
 #endif
 
