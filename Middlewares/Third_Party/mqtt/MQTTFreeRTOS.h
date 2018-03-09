@@ -22,11 +22,9 @@
 #include "lwip/dhcp.h"
 #include "lwip/tcpip.h"
 #include "lwip/netdb.h"
-//#include "FreeRTOS_Sockets.h"
-//#include "FreeRTOS_IP.h"
+#include "lwip.h"
 #include "semphr.h"
 #include "task.h"
-#include "string.h"
 
 typedef struct Timer 
 {

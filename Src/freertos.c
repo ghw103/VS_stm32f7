@@ -52,7 +52,29 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */     
+#include "stm32f7xx_hal.h"
+#include  "lcd_log.h"
+#include "timeouts.h"
 
+#include "lwip/inet.h"
+#include "lwip/sockets.h"
+#include "lwip/apps/fs.h"
+#include "lwip.h"
+#include "lwip/sys.h"
+#include "lwip/api.h"
+#include "lwip/opt.h"
+#include "dns.h"
+
+#include "adc.h"
+
+#include "MQTTClient.h"
+//#include "mqtt.h"
+#include "mqtt_opts.h"
+#include "transport.h"
+#include "MQTTPacket.h"
+#include "MQTTConnect.h"
+#include "MQTTPublish.h"
+#include "MQTTSubscribe.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -65,6 +87,35 @@ osThreadId mqtt_runHandle;
 osMessageQId tempQueueHandle;
 
 /* USER CODE BEGIN Variables */
+osThreadId defaultTaskHandle;
+osThreadId DHCPTaskHandle;
+osThreadId TCPclient_TaskHandle;
+osThreadId TCPsever_TaskHandle;
+osThreadId Socketclient_TaskHandle;
+osThreadId LEDTaskHandle;
+osThreadId TempTaskHandle;
+osThreadId MQTT_ClientTaskHandle;
+osThreadId MQTT_publishTaskHandle;
+osMessageQId tempQueueHandle;
+
+/* USER CODE BEGIN Variables */
+/* DHCP process states */
+#define DHCP_OFF                   (uint8_t) 0
+#define DHCP_START                 (uint8_t) 1
+#define DHCP_WAIT_ADDRESS          (uint8_t) 2
+#define DHCP_ADDRESS_ASSIGNED      (uint8_t) 3
+#define DHCP_TIMEOUT               (uint8_t) 4
+#define DHCP_LINK_DOWN             (uint8_t) 5
+
+__IO uint8_t DHCP_state = DHCP_WAIT_ADDRESS;
+#define MAX_DHCP_TRIES  4
+/*****************temperaturesensor*********************/
+#define TEMP_REFRESH_PERIOD   1000    /* Internal temperature refresh period */
+#define MAX_CONVERTED_VALUE   4095    /* Max converted value */
+#define AMBIENT_TEMP            25    /* Ambient Temperature */
+#define VSENS_AT_AMBIENT_TEMP  760    /* VSENSE value (mv) at ambient temperature */
+#define AVG_SLOPE               25    /* Avg_Solpe multiply by 10 */
+#define VREF                  3300
 
 /* USER CODE END Variables */
 
@@ -81,7 +132,14 @@ extern void MX_FATFS_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* USER CODE BEGIN FunctionPrototypes */
-
+void messageArrived(MessageData* data)
+{
+	printf("Message arrived on topic %.*s: %.*s\n",
+		data->topicName->lenstring.len,
+		data->topicName->lenstring.data,
+		data->message->payloadlen,
+		data->message->payload);
+}
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
@@ -111,8 +169,8 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of DHCP */
-  osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
-  DHCPHandle = osThreadCreate(osThread(DHCP), NULL);
+//  osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
+//  DHCPHandle = osThreadCreate(osThread(DHCP), NULL);
 
   /* definition and creation of LED */
   osThreadDef(LED, LED_Task, osPriorityLow, 0, 128);
@@ -155,9 +213,13 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
+	osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
+	DHCPHandle = osThreadCreate(osThread(DHCP), &gnetif);
   for(;;)
   {
+	  vTaskDelay(NULL);
     osDelay(1);
+	
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -167,10 +229,96 @@ void DHCP_Task(void const * argument)
 {
   /* USER CODE BEGIN DHCP_Task */
   /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	struct netif *netif = (struct netif *) argument;
+	ip_addr_t ipaddr;
+	ip_addr_t netmask;
+	ip_addr_t gw;
+	struct dhcp *dhcp;
+#ifdef USE_LCD
+	uint8_t iptxt[20];
+#endif
+	for (;;)
+	{
+		BSP_LED_Toggle(LED_RED);
+		switch (DHCP_state)
+		{
+		case DHCP_START:
+			{
+				ip_addr_set_zero_ip4(&netif->ip_addr);
+				ip_addr_set_zero_ip4(&netif->netmask);
+				ip_addr_set_zero_ip4(&netif->gw);
+				dhcp_start(netif);
+				DHCP_state = DHCP_WAIT_ADDRESS;
+#ifdef USE_LCD
+				printf("Looking for DHCP server ...\n");
+#endif
+
+			}
+			break;
+
+		case DHCP_WAIT_ADDRESS:
+			{
+
+				if (dhcp_supplied_address(netif))
+				{
+					DHCP_state = DHCP_ADDRESS_ASSIGNED;
+
+#ifdef USE_LCD
+					sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&netif->ip_addr));
+					printf("IP address assigned by a DHCP server: %s\n", iptxt);
+#else
+					BSP_LED_On(LED1);
+#endif
+				}
+				else
+				{
+					dhcp = (struct dhcp *)netif_get_client_data(netif, LWIP_NETIF_CLIENT_DATA_INDEX_DHCP);
+					//				  printf("%d\n", dhcp->tries);
+												/* DHCP timeout */
+												if(dhcp->tries > MAX_DHCP_TRIES)
+					{
+						DHCP_state = DHCP_TIMEOUT;
+
+						/* Stop DHCP */
+						dhcp_stop(netif);
+						/* Static address used */
+						IP_ADDR4(&ipaddr, IP_ADDR0, IP_ADDR1, IP_ADDR2, IP_ADDR3);
+						IP_ADDR4(&netmask, NETMASK_ADDR0, NETMASK_ADDR1, NETMASK_ADDR2, NETMASK_ADDR3);
+						IP_ADDR4(&gw, GW_ADDR0, GW_ADDR1, GW_ADDR2, GW_ADDR3);
+						netif_set_addr(netif, ip_2_ip4(&ipaddr), ip_2_ip4(&netmask), ip_2_ip4(&gw));
+						DHCP_state = DHCP_ADDRESS_ASSIGNED;
+#ifdef USE_LCD
+						sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&netif->ip_addr));
+						printf("DHCP Timeout !! \n");
+						printf("Static IP address: %s\n", iptxt);
+#else
+						BSP_LED_On(LED1);
+#endif
+					}
+				}
+			}
+			break;
+		case DHCP_ADDRESS_ASSIGNED:
+			{
+				/* definition and creation of MQTT_ClientTask */
+				osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityAboveNormal, 0, 1024);
+				MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
+				BSP_LED_Off(LED_RED);
+				vTaskDelete(NULL);  
+			}
+			break;
+		case DHCP_LINK_DOWN:
+			{
+				/* Stop DHCP */
+				dhcp_stop(netif);
+				DHCP_state = DHCP_OFF;
+			}
+			break;
+		default:
+			break;
+		}
+		osDelay(250);
+	}
   /* USER CODE END DHCP_Task */
 }
 
@@ -181,7 +329,8 @@ void LED_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+	  BSP_LED_Toggle(LED_RED);
+    osDelay(1000);
   }
   /* USER CODE END LED_Task */
 }
@@ -191,10 +340,21 @@ void Temp_Task(void const * argument)
 {
   /* USER CODE BEGIN Temp_Task */
   /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	__IO int32_t ConvertedValue = 0;
+	int32_t JTemp = 0x0;
+
+	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ConvertedValue, 1);
+	for (;;)
+	{
+		BSP_LED_On(LED_GREEN);
+		/* Compute the Junction Temperature value */
+		JTemp = ((((ConvertedValue * VREF) / MAX_CONVERTED_VALUE) - VSENS_AT_AMBIENT_TEMP) * 10 / AVG_SLOPE) + AMBIENT_TEMP;
+//		xQueueSend(tempQueueHandle, (void *)&JTemp, (TickType_t) 10);
+
+		BSP_LED_Off(LED_GREEN);
+		osDelay(2000);
+
+	}
   /* USER CODE END Temp_Task */
 }
 
@@ -203,10 +363,59 @@ void MQTT_Client_Task(void const * argument)
 {
   /* USER CODE BEGIN MQTT_Client_Task */
   /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
+	MQTTClient client;
+	Network network;
+	unsigned char sendbuf[80], readbuf[80];
+	int rc = 0, 
+	count = 0;
+	MQTTPacket_connectData connectData = MQTTPacket_connectData_initializer;
+
+	//pvParameters = 0;
+	NetworkInit(&network);
+	MQTTClientInit(&client, &network, 30000, sendbuf, sizeof(sendbuf), readbuf, sizeof(readbuf));
+
+	char* address = "66.154.108.162";
+//	char* address = "192.168.100.17";
+	char* port= "1883";
+	if ((rc = NetworkConnect(&network, address, port)) != 0)
+		printf("Return code from network connect is %d\n", rc);
+
+#if defined(MQTT_TASK)
+	if ((rc = MQTTStartTask(&client)) != pdPASS)
+		printf("Return code from start tasks is %d\n", rc);
+#endif
+
+	connectData.MQTTVersion = 3;
+	connectData.clientID.cstring = "MQTT_Client_1";
+	connectData.keepAliveInterval = 10;          //seconds
+	connectData.cleansession = 1;
+	connectData.username.cstring ="gaohongwei/iot";
+//	connectData.password.cstring = "f+Q9Lp++T5nysNVcLVfOWpIIDVz8MaVm5dyJA8jEXdU=";
+	if ((rc = MQTTConnect(&client, &connectData)) != 0)
+		printf("Return code from MQTT connect is %d\n", rc);
+	else
+		printf("MQTT Connected\n");
+
+		if ((rc = MQTTSubscribe(&client, "temperaturesensor", 2, messageArrived)) != 0)
+		printf("Return code from MQTT subscribe is %d\n", rc);
+	for(;;)
+	{
+		osDelay(1);
+//		MQTTMessage message;
+//		char payload[30];
+//		++count;
+//		message.qos = 2;
+//		message.retained = 0;
+//		sprintf(payload, "message number %d", count);
+//		message.payloadlen = strlen(payload);
+//		message.payload = payload;
+//		if ((rc = MQTTPublish(&client, "temperaturesensor", &message)) != 0)
+//			printf("Return code from MQTT publish is %d\n", rc);
+//#if !defined(MQTT_TASK)
+//		if((rc = MQTTYield(&client, 1000)) != 0)
+//			printf("Return code from yield is %d\n", rc);
+//#endif
+	}
   /* USER CODE END MQTT_Client_Task */
 }
 

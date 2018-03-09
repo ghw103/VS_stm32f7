@@ -14,7 +14,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{DCA85297-D6F2-4541-8F6D-AD968A126DA5}</ProjectGuid>
     <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
-    <BSP_VERSION>4.6</BSP_VERSION>
+    <BSP_VERSION>4.6R2</BSP_VERSION>
     <InPlaceBSPSubdir />
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -42,15 +42,15 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <AdditionalIncludeDirectories>../../Drivers/BSP/STM32F769I-Discovery;../../Drivers/BSP/Components/ft6x06;../../Drivers/BSP/Components/otm8009a;../../Drivers/BSP/Components/wm8994;../../Utilities/Log;../../Middlewares/Third_Party/mqtt;../../Middlewares/Third_Party/mqtt/src;..\..\Inc;..\..\Drivers\CMSIS\Include;..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc;..\..\Middlewares\Third_Party\FreeRTOS\Source\include;..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS;..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1;..\..\Middlewares\Third_Party\LwIP\src\include;..\..\Middlewares\Third_Party\LwIP\src\include\lwip;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv;..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot;..\..\Middlewares\Third_Party\LwIP\src\include\netif;..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp;..\..\Middlewares\Third_Party\LwIP\src\include\posix;..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys;..\..\Middlewares\Third_Party\LwIP\system;..\..\Middlewares\Third_Party\LwIP\system\arch;..\..\Middlewares\Third_Party\mbedTLS\include\mbedtls;..\..\Middlewares\Third_Party\mbedTLS\include;..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy;..\..\Middlewares\Third_Party\FatFs\src;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>LWIP_TIMEVAL_PRIVATE=0;DEBUG=1;USE_LCD;MBEDTLS_CONFIG_FILE=&lt;mbedtls_config.h&gt;;LWIP_IPV6;flash_layout;STM32F769xx;USE_FREERTOS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>LWIP_TIMEVAL_PRIVATE=0;DEBUG=1;USE_LCD;MBEDTLS_CONFIG_FILE=&lt;mbedtls_config.h&gt;;LWIP_IPV6;flash_layout;STM32F769xx;USE_FREERTOS;MQTT_TASK;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions />
       <CLanguageStandard />
       <CPPLanguageStandard />
     </ClCompile>
     <Link>
-      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
-      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
-      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LibrarySearchDirectories>;%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>;%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
       <AdditionalOptions />
       <LinkerScript />
     </Link>

@@ -15,9 +15,9 @@
  *    Ian Craggs - documentation and platform specific header
  *    Ian Craggs - add setMessageHandler function
  *******************************************************************************/
-
-#if !defined(__MQTT_CLIENT_C_)
-#define __MQTT_CLIENT_C_
+#include "MQTTFreeRTOS.h"
+#if !defined(MQTT_CLIENT_H)
+#define MQTT_CLIENT_H
 
 #if defined(__cplusplus)
  extern "C" {
@@ -35,10 +35,6 @@
 #endif
 
 #include "MQTTPacket.h"
-	 
-#include "MQTTFreeRTOS.h"
-	 
-
 
 #if defined(MQTTCLIENT_PLATFORM_HEADER)
 /* The following sequence of macros converts the MQTTCLIENT_PLATFORM_HEADER value
@@ -58,7 +54,7 @@
 enum QoS { QOS0, QOS1, QOS2, SUBFAIL=0x80 };
 
 /* all failure return codes must be negative */
-enum returnCode { BUFFER_OVERFLOW = -2, FAILURE = -1 };
+	 enum returnCode { BUFFER_OVERFLOW = -2, FAILURE = -1, uSUCCESS=0 };
 
 /* The Platform specific header must define the Network and Timer structures and functions
  * which operate on them.
@@ -68,7 +64,7 @@ typedef struct Network
 	int (*mqttread)(Network*, unsigned char* read_buffer, int, int);
 	int (*mqttwrite)(Network*, unsigned char* send_buffer, int, int);
 } Network;*/
-	 
+
 /* The Timer structure must be defined in the platform specific header,
  * and have the following functions to operate on it.  */
 extern void TimerInit(Timer*);
@@ -220,10 +216,7 @@ DLLExport int MQTTYield(MQTTClient* client, int time);
  *  @param client - the client object to use
  *  @return truth value indicating whether the client is connected to the server
  */
-//DLLExport int MQTTIsConnected(MQTTClient* client)
-//{
-//  return client->isconnected;
-//}
+DLLExport int MQTTIsConnected(MQTTClient* client);
 
 #if defined(MQTT_TASK)
 /** MQTT start background thread for a client.  After this, MQTTYield should not be called.
