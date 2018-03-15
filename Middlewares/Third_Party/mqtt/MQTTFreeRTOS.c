@@ -56,11 +56,8 @@ int MutexUnlock(Mutex* mutex)
 
 void TimerCountdownMS(Timer* timer, unsigned int timeout_ms)
 {
-	portTickType now = xTaskGetTickCount();
-	
-	timer->xTimeOut = now + timeout_ms / portTICK_RATE_MS;
-//	timer->xTicksToWait = timeout_ms / portTICK_PERIOD_MS; /* convert milliseconds to ticks */
-	//vTaskSetTimeOutState(&timer->xTimeOut); /* Record the time at which this function was entered. */
+	timer->xTicksToWait = timeout_ms / portTICK_PERIOD_MS; /* convert milliseconds to ticks */
+	vTaskSetTimeOutState(&timer->xTimeOut); /* Record the time at which this function was entered. */
 }
 
 

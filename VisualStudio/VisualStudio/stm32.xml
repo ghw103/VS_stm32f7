@@ -49,7 +49,7 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\..\stm32f7.gpdsc</RelativePath>
-        <Timestamp>131650398698443387</Timestamp>
+        <Timestamp>131653091896496601</Timestamp>
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>

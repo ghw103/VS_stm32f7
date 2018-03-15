@@ -2064,11 +2064,11 @@
     <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\MQTTClient.c">
       <Filter>Source files\中间件\mqtt</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\MQTTFreeRTOS.c">
-      <Filter>Source files\中间件\mqtt</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Src\syscalls.c">
       <Filter>Source files\usr app</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Middlewares\Third_Party\mqtt\MQTTstm.c">
+      <Filter>Source files\中间件\mqtt</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

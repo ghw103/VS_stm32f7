@@ -132,11 +132,11 @@ extern void MX_FATFS_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* USER CODE BEGIN FunctionPrototypes */
-void messageArrived(MessageData* data)
+void topic_received(MessageData* data)
 {
 	printf("Message arrived on topic %.*s: %.*s\n",
-		data->topicName->lenstring.len,
-		data->topicName->lenstring.data,
+		data->topic->lenstring.len,
+		data->topic->lenstring.data,
 		data->message->payloadlen,
 		data->message->payload);
 }
@@ -181,12 +181,12 @@ void MX_FREERTOS_Init(void) {
   TempHandle = osThreadCreate(osThread(Temp), NULL);
 
   /* definition and creation of MQTT_Client */
-  osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
-  MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
-
-  /* definition and creation of mqtt_run */
-  osThreadDef(mqtt_run, mqtt_run_Task, osPriorityIdle, 0, 128);
-  mqtt_runHandle = osThreadCreate(osThread(mqtt_run), NULL);
+//  osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
+//  MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
+//
+//  /* definition and creation of mqtt_run */
+//  osThreadDef(mqtt_run, mqtt_run_Task, osPriorityIdle, 0, 128);
+//  mqtt_runHandle = osThreadCreate(osThread(mqtt_run), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -301,7 +301,7 @@ void DHCP_Task(void const * argument)
 		case DHCP_ADDRESS_ASSIGNED:
 			{
 				/* definition and creation of MQTT_ClientTask */
-				osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityAboveNormal, 0, 1024);
+				osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
 				MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
 				BSP_LED_Off(LED_RED);
 				vTaskDelete(NULL);  
@@ -363,58 +363,44 @@ void MQTT_Client_Task(void const * argument)
 {
   /* USER CODE BEGIN MQTT_Client_Task */
   /* Infinite loop */
-	MQTTClient client;
-	Network network;
-	unsigned char sendbuf[80], readbuf[80];
-	int rc = 0, 
-	count = 0;
-	MQTTPacket_connectData connectData = MQTTPacket_connectData_initializer;
+	// testing mosquitto server
+#define MQTT_HOST "176.122.166.83"
+#define MQTT_PORT 1883
+#define MQTT_USER "mqtt_clein1"
+#define MQTT_PASS ""
+#define mqtt_client_id "MQTT on STM32"
+	struct Network network;
+	MQTTClient client = DefaultClient;
+	MQTTPacket_connectData data = MQTTPacket_connectData_initializer;
+	unsigned char mqtt_buf[100];
+	unsigned char mqtt_readbuf[100];
 
-	//pvParameters = 0;
-	NetworkInit(&network);
-	MQTTClientInit(&client, &network, 30000, sendbuf, sizeof(sendbuf), readbuf, sizeof(readbuf));
+	NewNetwork(&network);
+	ConnectNetwork(&network, MQTT_HOST, MQTT_PORT);
+	NewMQTTClient(&client, &network, 10000, mqtt_buf, 100, mqtt_readbuf, 100);
+	data.willFlag = 0;
+	data.MQTTVersion = 3;
+	data.clientID.cstring = mqtt_client_id;  // you client's unique identifier
+	data.username.cstring = MQTT_USER;
+	data.password.cstring = MQTT_PASS;
+	data.keepAliveInterval = 10;  // interval for PING message to be sent (seconds)
+	data.cleansession = 0;
+	MQTTConnect(&client, &data);
+	MQTTSubscribe(&client, "mytopic", QOS1, topic_received);
 
-	char* address = "66.154.108.162";
-//	char* address = "192.168.100.17";
-	char* port= "1883";
-	if ((rc = NetworkConnect(&network, address, port)) != 0)
-		printf("Return code from network connect is %d\n", rc);
-
-#if defined(MQTT_TASK)
-	if ((rc = MQTTStartTask(&client)) != pdPASS)
-		printf("Return code from start tasks is %d\n", rc);
-#endif
-
-	connectData.MQTTVersion = 3;
-	connectData.clientID.cstring = "MQTT_Client_1";
-	connectData.keepAliveInterval = 10;          //seconds
-	connectData.cleansession = 1;
-	connectData.username.cstring ="gaohongwei/iot";
-//	connectData.password.cstring = "f+Q9Lp++T5nysNVcLVfOWpIIDVz8MaVm5dyJA8jEXdU=";
-	if ((rc = MQTTConnect(&client, &connectData)) != 0)
-		printf("Return code from MQTT connect is %d\n", rc);
-	else
-		printf("MQTT Connected\n");
-
-		if ((rc = MQTTSubscribe(&client, "temperaturesensor", 2, messageArrived)) != 0)
-		printf("Return code from MQTT subscribe is %d\n", rc);
+	
+	char msg[64] = { "hello"};
+	MQTTMessage message;
+	message.payload = msg;
+	message.payloadlen = 64;
+	message.dup = 0;
+	message.qos = QOS1;
+	message.retained = 0;
+	MQTTPublish(&client, "mytopic", &message);
 	for(;;)
 	{
-		osDelay(1);
-//		MQTTMessage message;
-//		char payload[30];
-//		++count;
-//		message.qos = 2;
-//		message.retained = 0;
-//		sprintf(payload, "message number %d", count);
-//		message.payloadlen = strlen(payload);
-//		message.payload = payload;
-//		if ((rc = MQTTPublish(&client, "temperaturesensor", &message)) != 0)
-//			printf("Return code from MQTT publish is %d\n", rc);
-//#if !defined(MQTT_TASK)
-//		if((rc = MQTTYield(&client, 1000)) != 0)
-//			printf("Return code from yield is %d\n", rc);
-//#endif
+		MQTTYield(&client, 1000);
+		
 	}
   /* USER CODE END MQTT_Client_Task */
 }
