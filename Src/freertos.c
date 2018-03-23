@@ -52,29 +52,7 @@
 #include "cmsis_os.h"
 
 /* USER CODE BEGIN Includes */     
-#include "stm32f7xx_hal.h"
-#include  "lcd_log.h"
-#include "timeouts.h"
 
-#include "lwip/inet.h"
-#include "lwip/sockets.h"
-#include "lwip/apps/fs.h"
-#include "lwip.h"
-#include "lwip/sys.h"
-#include "lwip/api.h"
-#include "lwip/opt.h"
-#include "dns.h"
-
-#include "adc.h"
-
-#include "MQTTClient.h"
-//#include "mqtt.h"
-#include "mqtt_opts.h"
-#include "transport.h"
-#include "MQTTPacket.h"
-#include "MQTTConnect.h"
-#include "MQTTPublish.h"
-#include "MQTTSubscribe.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
@@ -87,35 +65,6 @@ osThreadId mqtt_runHandle;
 osMessageQId tempQueueHandle;
 
 /* USER CODE BEGIN Variables */
-osThreadId defaultTaskHandle;
-osThreadId DHCPTaskHandle;
-osThreadId TCPclient_TaskHandle;
-osThreadId TCPsever_TaskHandle;
-osThreadId Socketclient_TaskHandle;
-osThreadId LEDTaskHandle;
-osThreadId TempTaskHandle;
-osThreadId MQTT_ClientTaskHandle;
-osThreadId MQTT_publishTaskHandle;
-osMessageQId tempQueueHandle;
-
-/* USER CODE BEGIN Variables */
-/* DHCP process states */
-#define DHCP_OFF                   (uint8_t) 0
-#define DHCP_START                 (uint8_t) 1
-#define DHCP_WAIT_ADDRESS          (uint8_t) 2
-#define DHCP_ADDRESS_ASSIGNED      (uint8_t) 3
-#define DHCP_TIMEOUT               (uint8_t) 4
-#define DHCP_LINK_DOWN             (uint8_t) 5
-
-__IO uint8_t DHCP_state = DHCP_WAIT_ADDRESS;
-#define MAX_DHCP_TRIES  4
-/*****************temperaturesensor*********************/
-#define TEMP_REFRESH_PERIOD   1000    /* Internal temperature refresh period */
-#define MAX_CONVERTED_VALUE   4095    /* Max converted value */
-#define AMBIENT_TEMP            25    /* Ambient Temperature */
-#define VSENS_AT_AMBIENT_TEMP  760    /* VSENSE value (mv) at ambient temperature */
-#define AVG_SLOPE               25    /* Avg_Solpe multiply by 10 */
-#define VREF                  3300
 
 /* USER CODE END Variables */
 
@@ -132,6 +81,7 @@ extern void MX_FATFS_Init(void);
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 /* USER CODE BEGIN FunctionPrototypes */
+<<<<<<< HEAD
 void topic_received(MessageData* data)
 {
 	printf("Message arrived on topic %.*s: %.*s\n",
@@ -140,6 +90,9 @@ void topic_received(MessageData* data)
 		data->message->payloadlen,
 		data->message->payload);
 }
+=======
+
+>>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
@@ -169,8 +122,8 @@ void MX_FREERTOS_Init(void) {
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
 
   /* definition and creation of DHCP */
-//  osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
-//  DHCPHandle = osThreadCreate(osThread(DHCP), NULL);
+  osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
+  DHCPHandle = osThreadCreate(osThread(DHCP), NULL);
 
   /* definition and creation of LED */
   osThreadDef(LED, LED_Task, osPriorityLow, 0, 128);
@@ -213,13 +166,9 @@ void StartDefaultTask(void const * argument)
 
   /* USER CODE BEGIN StartDefaultTask */
   /* Infinite loop */
-	osThreadDef(DHCP, DHCP_Task, osPriorityHigh, 0, 256);
-	DHCPHandle = osThreadCreate(osThread(DHCP), &gnetif);
   for(;;)
   {
-	  vTaskDelay(NULL);
     osDelay(1);
-	
   }
   /* USER CODE END StartDefaultTask */
 }
@@ -229,6 +178,7 @@ void DHCP_Task(void const * argument)
 {
   /* USER CODE BEGIN DHCP_Task */
   /* Infinite loop */
+<<<<<<< HEAD
 	struct netif *netif = (struct netif *) argument;
 	ip_addr_t ipaddr;
 	ip_addr_t netmask;
@@ -319,6 +269,12 @@ void DHCP_Task(void const * argument)
 		}
 		osDelay(250);
 	}
+=======
+  for(;;)
+  {
+    osDelay(1);
+  }
+>>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
   /* USER CODE END DHCP_Task */
 }
 
@@ -329,8 +285,7 @@ void LED_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  BSP_LED_Toggle(LED_RED);
-    osDelay(1000);
+    osDelay(1);
   }
   /* USER CODE END LED_Task */
 }
@@ -340,21 +295,10 @@ void Temp_Task(void const * argument)
 {
   /* USER CODE BEGIN Temp_Task */
   /* Infinite loop */
-	__IO int32_t ConvertedValue = 0;
-	int32_t JTemp = 0x0;
-
-	HAL_ADC_Start_DMA(&hadc1, (uint32_t*)&ConvertedValue, 1);
-	for (;;)
-	{
-		BSP_LED_On(LED_GREEN);
-		/* Compute the Junction Temperature value */
-		JTemp = ((((ConvertedValue * VREF) / MAX_CONVERTED_VALUE) - VSENS_AT_AMBIENT_TEMP) * 10 / AVG_SLOPE) + AMBIENT_TEMP;
-//		xQueueSend(tempQueueHandle, (void *)&JTemp, (TickType_t) 10);
-
-		BSP_LED_Off(LED_GREEN);
-		osDelay(2000);
-
-	}
+  for(;;)
+  {
+    osDelay(1);
+  }
   /* USER CODE END Temp_Task */
 }
 
@@ -363,6 +307,7 @@ void MQTT_Client_Task(void const * argument)
 {
   /* USER CODE BEGIN MQTT_Client_Task */
   /* Infinite loop */
+<<<<<<< HEAD
 	// testing mosquitto server
 #define MQTT_HOST "176.122.166.83"
 #define MQTT_PORT 1883
@@ -402,6 +347,12 @@ void MQTT_Client_Task(void const * argument)
 		MQTTYield(&client, 1000);
 		
 	}
+=======
+  for(;;)
+  {
+    osDelay(1);
+  }
+>>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
   /* USER CODE END MQTT_Client_Task */
 }
 

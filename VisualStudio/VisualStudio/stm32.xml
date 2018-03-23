@@ -7,7 +7,7 @@
     <Revision>2</Revision>
   </ToolchainVersion>
   <BspID>com.sysprogs.arm.stm32</BspID>
-  <BspVersion>4.6R2</BspVersion>
+  <BspVersion>4.6</BspVersion>
   <McuID>STM32F769NI</McuID>
   <MCUDefinitionFile>STM32F7xxxx/DeviceDefinitions/stm32f769xx.xml</MCUDefinitionFile>
   <MCUProperties>
@@ -19,10 +19,6 @@
       <KeyValue>
         <Key>com.sysprogs.bspoptions.arm.floatmode</Key>
         <Value>-mfloat-abi=hard</Value>
-      </KeyValue>
-      <KeyValue>
-        <Key>com.sysprogs.mcuoptions.ignore_startup_file</Key>
-        <Value />
       </KeyValue>
       <KeyValue>
         <Key>com.sysprogs.toolchainoptions.arm.libctype</Key>
@@ -49,7 +45,11 @@
     <AllDependencies>
       <ProjectDependency>
         <RelativePath>..\..\stm32f7.gpdsc</RelativePath>
+<<<<<<< HEAD
         <Timestamp>131653091896496601</Timestamp>
+=======
+        <Timestamp>131641703724688047</Timestamp>
+>>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
       </ProjectDependency>
     </AllDependencies>
     <RootDirectory>
@@ -1813,28 +1813,28 @@
       <ImportedConfiguration>
         <Settings>
           <IncludeDirectories>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Inc</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\CMSIS\Include</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\STM32F7xx_HAL_Driver\Inc</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\include</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\netif</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\posix</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\system</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\system\arch</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\mbedTLS\include\mbedtls</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\mbedTLS\include</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy</string>
-            <string>C:\Users\GaoHongWei\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FatFs\src</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Inc</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\CMSIS\Include</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\CMSIS\Device\ST\STM32F7xx\Include</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\STM32F7xx_HAL_Driver\Inc</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\include</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM7\r0p1</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\apps</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\priv</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\lwip\prot</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\netif</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\netif\ppp</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\posix</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\src\include\posix\sys</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\system</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\LwIP\system\arch</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\mbedTLS\include\mbedtls</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\mbedTLS\include</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Drivers\STM32F7xx_HAL_Driver\Inc\Legacy</string>
+            <string>C:\Users\GAO\Desktop\VS_stm32f7\VisualStudio\VisualStudio\..\..\Middlewares\Third_Party\FatFs\src</string>
           </IncludeDirectories>
           <PreprocessorMacros>
             <string>$$com.sysprogs.bspoptions.primary_memory$$_layout</string>

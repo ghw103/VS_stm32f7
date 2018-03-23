@@ -60,6 +60,31 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define ULPI_D7_Pin GPIO_PIN_5
+#define ULPI_D7_GPIO_Port GPIOB
+#define ULPI_DIR_Pin GPIO_PIN_11
+#define ULPI_DIR_GPIO_Port GPIOI
+#define ULPI_NXT_Pin GPIO_PIN_4
+#define ULPI_NXT_GPIO_Port GPIOH
+#define ULPI_D6_Pin GPIO_PIN_13
+#define ULPI_D6_GPIO_Port GPIOB
+#define ULPI_D5_Pin GPIO_PIN_12
+#define ULPI_D5_GPIO_Port GPIOB
+#define ULPI_STP_Pin GPIO_PIN_0
+#define ULPI_STP_GPIO_Port GPIOC
+#define ULPI_CLK_Pin GPIO_PIN_5
+#define ULPI_CLK_GPIO_Port GPIOA
+#define ULPI_D3_Pin GPIO_PIN_10
+#define ULPI_D3_GPIO_Port GPIOB
+#define ULPI_D0_Pin GPIO_PIN_3
+#define ULPI_D0_GPIO_Port GPIOA
+#define ULPI_D2_Pin GPIO_PIN_1
+#define ULPI_D2_GPIO_Port GPIOB
+#define ULPI_D1_Pin GPIO_PIN_0
+#define ULPI_D1_GPIO_Port GPIOB
+#define ULPI_D4_Pin GPIO_PIN_11
+#define ULPI_D4_GPIO_Port GPIOB
+
 /* ########################## Assert Selection ############################## */
 /**
   * @brief Uncomment the line below to expanse the "assert_param" macro in the 
