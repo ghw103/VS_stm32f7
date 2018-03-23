@@ -83,9 +83,9 @@
 
 /* Define the cache depth */
 #define     CACHE_SIZE              100
-#define     YWINDOW_SIZE            35
+#define     YWINDOW_SIZE            32
 
-#if (YWINDOW_SIZE > 35)
+#if (YWINDOW_SIZE > 32)
   #error "Wrong YWINDOW SIZE"
 #endif
 

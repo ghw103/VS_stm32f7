@@ -17,32 +17,12 @@
  *******************************************************************************/
 #include "MQTTClient.h"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void  NewMessageData(MessageData* md, MQTTString* aTopicName, MQTTMessage* aMessgage) {
-    md->topic = aTopicName;
-    md->message = aMessgage;
-=======
-#include "FreeRTOS.h"
-#include "lwip/sockets.h"
-#include "lwip/dhcp.h"
-#include "lwip/tcpip.h"
-#include "lwip/netdb.h"
-#include "semphr.h"
-#include "task.h"
-
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 #include <stdio.h>
 #include <string.h>
 
 static void NewMessageData(MessageData* md, MQTTString* aTopicName, MQTTMessage* aMessage) {
     md->topicName = aTopicName;
     md->message = aMessage;
-<<<<<<< HEAD
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 }
 
 
@@ -65,18 +45,8 @@ static int sendPacket(MQTTClient* c, int length, Timer* timer)
     }
     if (sent == length)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        countdown(&(c->ping_timer), c->keepAliveInterval); // record the fact that we have successfully sent the packet
-        rc = mySUCCESS;
-=======
-        TimerCountdown(&c->last_sent, c->keepAliveInterval); // record the fact that we have successfully sent the packet
-        rc = SUCCESS;
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
         TimerCountdown(&c->last_sent, c->keepAliveInterval); // record the fact that we have successfully sent the packet
         rc = uSUCCESS;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
     }
     else
         rc = FAILURE;
@@ -222,15 +192,7 @@ int deliverMessage(MQTTClient* c, MQTTString* topicName, MQTTMessage* message)
                 MessageData md;
                 NewMessageData(&md, topicName, message);
                 c->messageHandlers[i].fp(&md);
-<<<<<<< HEAD
-<<<<<<< HEAD
-                rc = mySUCCESS;
-=======
-                rc = SUCCESS;
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
                 rc = uSUCCESS;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
             }
         }
     }
@@ -240,36 +202,16 @@ int deliverMessage(MQTTClient* c, MQTTString* topicName, MQTTMessage* message)
         MessageData md;
         NewMessageData(&md, topicName, message);
         c->defaultMessageHandler(&md);
-<<<<<<< HEAD
-<<<<<<< HEAD
-        rc = mySUCCESS;
-    }   
-    
-=======
-        rc = SUCCESS;
-    }
-
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
         rc = uSUCCESS;
     }
 
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
     return rc;
 }
 
 
 int keepalive(MQTTClient* c)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int rc = mySUCCESS;
-=======
-    int rc = SUCCESS;
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     int rc = uSUCCESS;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     if (c->keepAliveInterval == 0)
         goto exit;
@@ -280,31 +222,13 @@ int keepalive(MQTTClient* c)
             rc = FAILURE; /* PINGRESP not received in keepalive interval */
         else
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-	        printf("ping");
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
             Timer timer;
             TimerInit(&timer);
             TimerCountdownMS(&timer, 1000);
 	        printf("ping");
             int len = MQTTSerialize_pingreq(c->buf, c->buf_size);
-<<<<<<< HEAD
-            if (len > 0)
-                sendPacket(c, len, &timer);
-=======
-            Timer timer;
-            TimerInit(&timer);
-            TimerCountdownMS(&timer, 1000);
-            int len = MQTTSerialize_pingreq(c->buf, c->buf_size);
-            if (len > 0 && (rc = sendPacket(c, len, &timer)) == SUCCESS) // send the ping packet
-                c->ping_outstanding = 1;
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
             if (len > 0 && (rc = sendPacket(c, len, &timer)) == uSUCCESS) // send the ping packet
                 c->ping_outstanding = 1;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         }
     }
 
@@ -334,19 +258,9 @@ void MQTTCloseSession(MQTTClient* c)
 int cycle(MQTTClient* c, Timer* timer)
 {
     int len = 0,
-<<<<<<< HEAD
-<<<<<<< HEAD
-        rc = mySUCCESS;
-=======
-        rc = SUCCESS;
-
-    int packet_type = readPacket(c, timer);     /* read the socket, see what work is due */
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
         rc = uSUCCESS;
 
     int packet_type = readPacket(c, timer);     /* read the socket, see what work is due */
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     switch (packet_type)
     {
@@ -397,15 +311,7 @@ int cycle(MQTTClient* c, Timer* timer)
             else if ((len = MQTTSerialize_ack(c->buf, c->buf_size,
                 (packet_type == PUBREC) ? PUBREL : PUBCOMP, 0, mypacketid)) <= 0)
                 rc = FAILURE;
-<<<<<<< HEAD
-<<<<<<< HEAD
-            else if ((rc = sendPacket(c, len, timer)) != mySUCCESS) // send the PUBREL packet
-=======
-            else if ((rc = sendPacket(c, len, timer)) != SUCCESS) // send the PUBREL packet
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
             else if ((rc = sendPacket(c, len, timer)) != uSUCCESS) // send the PUBREL packet
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
                 rc = FAILURE; // there was a problem
             if (rc == FAILURE)
                 goto exit; // there was a problem
@@ -418,23 +324,6 @@ int cycle(MQTTClient* c, Timer* timer)
             c->ping_outstanding = 0;
             break;
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (c->isconnected)
-        rc = keepalive(c);
-exit:
-    if (rc == mySUCCESS)
-=======
-
-    if (keepalive(c) != SUCCESS) {
-        //check only keepalive FAILURE status so that previous FAILURE status can be considered as FAULT
-        rc = FAILURE;
-    }
-
-exit:
-    if (rc == SUCCESS)
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
 
     if (keepalive(c) != uSUCCESS) {
         //check only keepalive FAILURE status so that previous FAILURE status can be considered as FAULT
@@ -443,7 +332,6 @@ exit:
 
 exit:
     if (rc == uSUCCESS)
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         rc = packet_type;
     else if (c->isconnected)
         MQTTCloseSession(c);
@@ -453,30 +341,8 @@ exit:
 
 int MQTTYield(MQTTClient* c, int timeout_ms)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int i;
-    c->ipstack = network;
-=======
-    int rc = SUCCESS;
-    Timer timer;
-
-    TimerInit(&timer);
-    TimerCountdownMS(&timer, timeout_ms);
-
-	  do
-    {
-        if (cycle(c, &timer) < 0)
-        {
-            rc = FAILURE;
-            break;
-        }
-  	} while (!TimerIsExpired(&timer));
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     int rc = uSUCCESS;
     Timer timer;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     TimerInit(&timer);
     TimerCountdownMS(&timer, timeout_ms);
@@ -500,46 +366,24 @@ int MQTTIsConnected(MQTTClient* client)
 
 void MQTTRun(void* parm)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    int rc = mySUCCESS;
-    Timer timer;
-=======
 	Timer timer;
 	MQTTClient* c = (MQTTClient*)parm;
-
-=======
-	Timer timer;
-	MQTTClient* c = (MQTTClient*)parm;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 	TimerInit(&timer);
 
 	while (1)
 	{
-<<<<<<< HEAD
-#if defined(MQTT_TASK)
-		MutexLock(&c->mutex);
-#endif
-		TimerCountdownMS(&timer, 500); /* Don't wait too long if no traffic is incoming */
-=======
 		printf("run\n");
 #if defined(MQTT_TASK)
 		MutexLock(&c->mutex);
 #endif
 		//osDelay(500);
 		TimerCountdownMS(&timer, 50); /* Don't wait too long if no traffic is incoming */
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 		cycle(c, &timer);
 #if defined(MQTT_TASK)
 		MutexUnlock(&c->mutex);
 #endif
 	}
 }
-<<<<<<< HEAD
-
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
 
 #if defined(MQTT_TASK)
@@ -575,21 +419,6 @@ int MQTTConnectWithResults(MQTTClient* c, MQTTPacket_connectData* options, MQTTC
     MQTTPacket_connectData default_options = MQTTPacket_connectData_initializer;
     int len = 0;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (c->isconnected) // don't send connect packet again if we are already connected
-        goto exit;
-=======
-#if defined(MQTT_TASK)
-	  MutexLock(&c->mutex);
-#endif
-	  //if (c->isconnected) /* don't send connect packet again if we are already connected */
-		 // goto exit;
-
-    TimerInit(&connect_timer);
-    TimerCountdownMS(&connect_timer, c->command_timeout_ms);
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
 #if defined(MQTT_TASK)
 	  MutexLock(&c->mutex);
 #endif
@@ -598,7 +427,6 @@ int MQTTConnectWithResults(MQTTClient* c, MQTTPacket_connectData* options, MQTTC
 
     TimerInit(&connect_timer);
     TimerCountdownMS(&connect_timer, c->command_timeout_ms);
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     if (options == 0)
         options = &default_options; /* set default options if none were supplied */
@@ -608,15 +436,7 @@ int MQTTConnectWithResults(MQTTClient* c, MQTTPacket_connectData* options, MQTTC
     TimerCountdown(&c->last_received, c->keepAliveInterval);
     if ((len = MQTTSerialize_connect(c->buf, c->buf_size, options)) <= 0)
         goto exit;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if ((rc = sendPacket(c, len, &connect_timer)) != mySUCCESS)  // send the connect packet
-=======
-    if ((rc = sendPacket(c, len, &connect_timer)) != SUCCESS)  // send the connect packet
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     if ((rc = sendPacket(c, len, &connect_timer)) != uSUCCESS)  // send the connect packet
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         goto exit; // there was a problem
 
     // this will be a blocking call, wait for the connack
@@ -633,17 +453,8 @@ int MQTTConnectWithResults(MQTTClient* c, MQTTPacket_connectData* options, MQTTC
         rc = FAILURE;
 
 exit:
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if (rc == mySUCCESS)
-=======
-    if (rc == SUCCESS)
-    {
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     if (rc == uSUCCESS)
     {
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         c->isconnected = 1;
         c->ping_outstanding = 0;
     }
@@ -671,12 +482,6 @@ int MQTTSetMessageHandler(MQTTClient* c, const char* topicFilter, messageHandler
     /* first check for an existing matching slot */
     for (i = 0; i < MAX_MESSAGE_HANDLERS; ++i)
     {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        goto exit;             // there was a problem
-=======
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         if (c->messageHandlers[i].topicFilter != NULL && strcmp(c->messageHandlers[i].topicFilter, topicFilter) == 0)
         {
             if (messageHandler == NULL) /* remove existing */
@@ -684,16 +489,9 @@ int MQTTSetMessageHandler(MQTTClient* c, const char* topicFilter, messageHandler
                 c->messageHandlers[i].topicFilter = NULL;
                 c->messageHandlers[i].fp = NULL;
             }
-<<<<<<< HEAD
-            rc = SUCCESS; /* return i when adding new subscription */
-            break;
-        }
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
             rc = uSUCCESS; /* return i when adding new subscription */
             break;
         }
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
     }
     /* if no existing, look for empty slot (unless we are removing) */
     if (messageHandler != NULL) {
@@ -703,26 +501,11 @@ int MQTTSetMessageHandler(MQTTClient* c, const char* topicFilter, messageHandler
             {
                 if (c->messageHandlers[i].topicFilter == NULL)
                 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    c->messageHandlers[i].topicFilter = topic;
-                    c->messageHandlers[i].fp = handler;
-                    rc = 0;
-=======
-                    rc = SUCCESS;
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
                     rc = uSUCCESS;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
                     break;
                 }
             }
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         if (i < MAX_MESSAGE_HANDLERS)
         {
             c->messageHandlers[i].topicFilter = topicFilter;
@@ -745,13 +528,8 @@ int MQTTSubscribeWithResults(MQTTClient* c, const char* topicFilter, enum QoS qo
 #if defined(MQTT_TASK)
 	  MutexLock(&c->mutex);
 #endif
-<<<<<<< HEAD
-	  //if (!c->isconnected)
-		 //   goto exit;
-=======
 	  if (!c->isconnected)
 		    goto exit;
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     TimerInit(&timer);
     TimerCountdownMS(&timer, c->command_timeout_ms);
@@ -759,11 +537,7 @@ int MQTTSubscribeWithResults(MQTTClient* c, const char* topicFilter, enum QoS qo
     len = MQTTSerialize_subscribe(c->buf, c->buf_size, 0, getNextPacketId(c), 1, &topic, (int*)&qos);
     if (len <= 0)
         goto exit;
-<<<<<<< HEAD
-    if ((rc = sendPacket(c, len, &timer)) != SUCCESS) // send the subscribe packet
-=======
     if ((rc = sendPacket(c, len, &timer)) != uSUCCESS) // send the subscribe packet
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         goto exit;             // there was a problem
 
     if (waitfor(c, SUBACK, &timer) == SUBACK)      // wait for suback
@@ -776,10 +550,6 @@ int MQTTSubscribeWithResults(MQTTClient* c, const char* topicFilter, enum QoS qo
             if (data->grantedQoS != 0x80)
                 rc = MQTTSetMessageHandler(c, topicFilter, messageHandler);
         }
-<<<<<<< HEAD
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
     }
     else
         rc = FAILURE;
@@ -821,15 +591,7 @@ int MQTTUnsubscribe(MQTTClient* c, const char* topicFilter)
 
     if ((len = MQTTSerialize_unsubscribe(c->buf, c->buf_size, 0, getNextPacketId(c), 1, &topic)) <= 0)
         goto exit;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if ((rc = sendPacket(c, len, &timer)) != mySUCCESS) // send the subscribe packet
-=======
-    if ((rc = sendPacket(c, len, &timer)) != SUCCESS) // send the subscribe packet
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     if ((rc = sendPacket(c, len, &timer)) != uSUCCESS) // send the subscribe packet
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         goto exit; // there was a problem
 
     if (waitfor(c, UNSUBACK, &timer) == UNSUBACK)
@@ -862,24 +624,6 @@ int MQTTPublish(MQTTClient* c, const char* topicName, MQTTMessage* message)
     topic.cstring = (char *)topicName;
     int len = 0;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    InitTimer(&timer);
-    countdown_ms(&timer, c->command_timeout_ms);
-    
-    if (!c->isconnected)
-        goto exit;
-=======
-#if defined(MQTT_TASK)
-	  MutexLock(&c->mutex);
-#endif
-	  //if (!c->i/*sconnected)
-		 //   goto exit;*/
-
-    TimerInit(&timer);
-    TimerCountdownMS(&timer, c->command_timeout_ms);
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
 #if defined(MQTT_TASK)
 	  MutexLock(&c->mutex);
 #endif
@@ -888,7 +632,6 @@ int MQTTPublish(MQTTClient* c, const char* topicName, MQTTMessage* message)
 
     TimerInit(&timer);
     TimerCountdownMS(&timer, c->command_timeout_ms);
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
     if (message->qos == QOS1 || message->qos == QOS2)
         message->id = getNextPacketId(c);
@@ -897,16 +640,7 @@ int MQTTPublish(MQTTClient* c, const char* topicName, MQTTMessage* message)
               topic, (unsigned char*)message->payload, message->payloadlen);
     if (len <= 0)
         goto exit;
-<<<<<<< HEAD
-<<<<<<< HEAD
-    if ((rc = sendPacket(c, len, &timer)) != mySUCCESS) // send the subscribe packet
-    {
-=======
-    if ((rc = sendPacket(c, len, &timer)) != SUCCESS) // send the subscribe packet
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     if ((rc = sendPacket(c, len, &timer)) != uSUCCESS) // send the subscribe packet
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
         goto exit; // there was a problem
 
     if (message->qos == QOS1)
@@ -935,24 +669,11 @@ int MQTTPublish(MQTTClient* c, const char* topicName, MQTTMessage* message)
     }
 
 exit:
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-	printf("exit\n");
-    if (rc == FAILURE){}
-        MQTTCloseSession(c);
-	
-#if defined(MQTT_TASK)
-	  MutexUnlock(&c->mutex);
-#endif
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
     if (rc == FAILURE)
         MQTTCloseSession(c);
 #if defined(MQTT_TASK)
 	  MutexUnlock(&c->mutex);
 #endif
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
     return rc;
 }
 

@@ -22,16 +22,19 @@ int ThreadStart(Thread* thread, void (*fn)(void*), void* arg)
 {
 	int rc = 0;
 	uint16_t usTaskStackSize = (configMINIMAL_STACK_SIZE * 5);
-	UBaseType_t uxTaskPriority = uxTaskPriorityGet(NULL); /* set the priority as the same as the calling task*/
-
-	rc = xTaskCreate(fn,	/* The function that implements the task. */
-		"MQTTTask",			/* Just a text name for the task to aid debugging. */
-		usTaskStackSize,	/* The stack size is defined in FreeRTOSIPConfig.h. */
-		arg,				/* The task parameter, not used in this case. */
-		uxTaskPriority,		/* The priority assigned to the task is defined in FreeRTOSConfig.h. */
-		&thread->task);		/* The task handle is not used. */
-
-	return rc;
+//	UBaseType_t uxTaskPriority = uxTaskPriorityGet(NULL); /* set the priority as the same as the calling task*/
+//
+//	rc = xTaskCreate(fn,	/* The function that implements the task. */
+//		"MQTTTask",			/* Just a text name for the task to aid debugging. */
+//		usTaskStackSize,	/* The stack size is defined in FreeRTOSIPConfig.h. */
+//		arg,				/* The task parameter, not used in this case. */
+//		uxTaskPriority,		/* The priority assigned to the task is defined in FreeRTOSConfig.h. */
+//		&thread->task);		/* The task handle is not used. */
+//
+//	return rc;
+//	
+	const osThreadDef_t os_thread_def = { "MQTTTask", (os_pthread)fn, osPriorityAboveNormal, 0, usTaskStackSize };
+	return osThreadCreate(&os_thread_def, arg);
 }
 
 
@@ -125,7 +128,9 @@ int FreeRTOS_write(Network* n, unsigned char* buffer, int len, int timeout_ms)
 		int rc = 0;
 
 		setsockopt(n->my_socket, 0, SO_RCVTIMEO, &xTicksToWait, sizeof(xTicksToWait));
-		rc = send(n->my_socket, buffer + sentLen, len - sentLen, 0);
+	rc = send(n->my_socket, buffer + sentLen, len - sentLen, 0);
+		//rc = write(n->my_socket, buffer + sentLen, len - sentLen);
+		
 		if (rc > 0)
 			sentLen += rc;
 		else if (rc < 0)
@@ -156,31 +161,59 @@ void NetworkInit(Network* n)
 
 int NetworkConnect(Network* n, char* addr, int port)
 {
-	struct sockaddr_in sAddr;
-	int retVal = -1;
-	uint16_t ipAddress;
+	int type = SOCK_STREAM;
+	struct sockaddr_in address;
+	int rc = -1;
+	sa_family_t family = AF_INET;
+	struct addrinfo *result = NULL;
+	struct addrinfo hints = { 0, AF_UNSPEC, SOCK_STREAM, IPPROTO_TCP, 0, NULL, NULL, NULL };
+	static struct timeval tv;
 
-	if ((ipAddress = gethostbyname(addr)) == 0)
-		goto exit;
-#ifdef USE_LCD  
+	n->my_socket = -1;
+	if (addr[0] == '[')
+		++addr;
+
+	if ((rc = getaddrinfo(addr, port, &hints, &result)) == 0)
+	{
+		struct addrinfo* res = result;
+		/* prefer ip4 addresses */
+		while (res)
+		{
+			if (res->ai_family == AF_INET)
+			{
+				result = res;
+				break;
+			}
+			res = res->ai_next;
+		}
+		if (result->ai_family == AF_INET)
+		{
+			address.sin_port = ((struct sockaddr_in*)(result->ai_addr))->sin_port;    // htons(port);
+			address.sin_family = family = AF_INET;
+			address.sin_addr = ((struct sockaddr_in*)(result->ai_addr))->sin_addr;
+		}
+		else
+		rc = -1;
+		freeaddrinfo(result);
+	}
+	if (rc == 0)
+	{
+		n->my_socket =	socket(family, type, 0);
+		if (n->my_socket != -1)
+		{
+			if (family == AF_INET)
+				rc = connect(n->my_socket, (struct sockaddr*)&address, sizeof(address));
+		}
+	}
+	tv.tv_sec = 1; /* 1 second Timeout */
+	tv.tv_usec = 0;  
+	setsockopt(n->my_socket, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv, sizeof(struct timeval));
+#ifdef USE_LCD 
 	uint8_t iptxt[20];
-	sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&ipAddress));
+	sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&address.sin_addr));
 	printf("Static IP address: %s\n", iptxt);
 #endif
-	sAddr.sin_port = htons(port);
-	sAddr.sin_addr.s_addr = ipAddress;
-
-	if ((n->my_socket = socket(AF_INET, SOCK_STREAM, 0)) < 0)
-		goto exit;
-
-	if ((retVal = connect(n->my_socket, &sAddr, sizeof(sAddr))) < 0)
-	{
-	   closesocket(n->my_socket);
-	    goto exit;
-	}
-
-exit:
-	return retVal;
+	return rc;
 }
 
 

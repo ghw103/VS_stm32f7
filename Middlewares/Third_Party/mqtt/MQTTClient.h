@@ -15,18 +15,9 @@
  *    Ian Craggs - documentation and platform specific header
  *    Ian Craggs - add setMessageHandler function
  *******************************************************************************/
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
-#if !defined(__MQTT_CLIENT_C_)
-#define __MQTT_CLIENT_C_
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
 #include "MQTTFreeRTOS.h"
 #if !defined(MQTT_CLIENT_H)
 #define MQTT_CLIENT_H
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
 #if defined(__cplusplus)
  extern "C" {
@@ -44,17 +35,6 @@
 #endif
 
 #include "MQTTPacket.h"
-<<<<<<< HEAD
-<<<<<<< HEAD
-#include "MQTTstm.h"
-=======
-	 
-#include "MQTTFreeRTOS.h"
-	 
-
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
 #if defined(MQTTCLIENT_PLATFORM_HEADER)
 /* The following sequence of macros converts the MQTTCLIENT_PLATFORM_HEADER value
@@ -73,20 +53,9 @@
 
 enum QoS { QOS0, QOS1, QOS2, SUBFAIL=0x80 };
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-void NewTimer(Timer*);
-
-typedef struct _MQTTMessage
-=======
-/* all failure return codes must be negative */
-enum returnCode { BUFFER_OVERFLOW = -2, FAILURE = -1 };
-
-=======
 /* all failure return codes must be negative */
 	 enum returnCode { BUFFER_OVERFLOW = -2, FAILURE = -1, uSUCCESS=0 };
 
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 /* The Platform specific header must define the Network and Timer structures and functions
  * which operate on them.
  *
@@ -95,11 +64,7 @@ typedef struct Network
 	int (*mqttread)(Network*, unsigned char* read_buffer, int, int);
 	int (*mqttwrite)(Network*, unsigned char* send_buffer, int, int);
 } Network;*/
-<<<<<<< HEAD
-	 
-=======
 
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 /* The Timer structure must be defined in the platform specific header,
  * and have the following functions to operate on it.  */
 extern void TimerInit(Timer*);
@@ -109,10 +74,6 @@ extern void TimerCountdown(Timer*, unsigned int);
 extern int TimerLeftMS(Timer*);
 
 typedef struct MQTTMessage
-<<<<<<< HEAD
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 {
     enum QoS qos;
     unsigned char retained;
@@ -170,107 +131,7 @@ typedef struct MQTTClient
 #endif
 } MQTTClient;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-/**
- * Create an MQTT client object
- * @param client
- * @param network
- * @param command_timeout_ms
- * @param
- */
-DLLExport void MQTTClientInit(MQTTClient* client, Network* network, unsigned int command_timeout_ms,
-		unsigned char* sendbuf, size_t sendbuf_size, unsigned char* readbuf, size_t readbuf_size);
-
-/** MQTT Connect - send an MQTT connect packet down the network and wait for a Connack
- *  The nework object must be connected to the network endpoint before calling this
- *  @param options - connect options
- *  @return success code
- */
-DLLExport int MQTTConnectWithResults(MQTTClient* client, MQTTPacket_connectData* options,
-    MQTTConnackData* data);
-
-/** MQTT Connect - send an MQTT connect packet down the network and wait for a Connack
- *  The nework object must be connected to the network endpoint before calling this
- *  @param options - connect options
- *  @return success code
- */
-DLLExport int MQTTConnect(MQTTClient* client, MQTTPacket_connectData* options);
-
-/** MQTT Publish - send an MQTT publish packet and wait for all acks to complete for all QoSs
- *  @param client - the client object to use
- *  @param topic - the topic to publish to
- *  @param message - the message to send
- *  @return success code
- */
-DLLExport int MQTTPublish(MQTTClient* client, const char*, MQTTMessage*);
-
-/** MQTT SetMessageHandler - set or remove a per topic message handler
- *  @param client - the client object to use
- *  @param topicFilter - the topic filter set the message handler for
- *  @param messageHandler - pointer to the message handler function or NULL to remove
- *  @return success code
- */
-DLLExport int MQTTSetMessageHandler(MQTTClient* c, const char* topicFilter, messageHandler messageHandler);
-
-/** MQTT Subscribe - send an MQTT subscribe packet and wait for suback before returning.
- *  @param client - the client object to use
- *  @param topicFilter - the topic filter to subscribe to
- *  @param message - the message to send
- *  @return success code
- */
-DLLExport int MQTTSubscribe(MQTTClient* client, const char* topicFilter, enum QoS, messageHandler);
-
-/** MQTT Subscribe - send an MQTT subscribe packet and wait for suback before returning.
- *  @param client - the client object to use
- *  @param topicFilter - the topic filter to subscribe to
- *  @param message - the message to send
- *  @param data - suback granted QoS returned
- *  @return success code
- */
-DLLExport int MQTTSubscribeWithResults(MQTTClient* client, const char* topicFilter, enum QoS, messageHandler, MQTTSubackData* data);
-
-/** MQTT Subscribe - send an MQTT unsubscribe packet and wait for unsuback before returning.
- *  @param client - the client object to use
- *  @param topicFilter - the topic filter to unsubscribe from
- *  @return success code
- */
-DLLExport int MQTTUnsubscribe(MQTTClient* client, const char* topicFilter);
-
-/** MQTT Disconnect - send an MQTT disconnect packet and close the connection
- *  @param client - the client object to use
- *  @return success code
- */
-DLLExport int MQTTDisconnect(MQTTClient* client);
-
-/** MQTT Yield - MQTT background
- *  @param client - the client object to use
- *  @param time - the time, in milliseconds, to yield for
- *  @return success code
- */
-DLLExport int MQTTYield(MQTTClient* client, int time);
-
-/** MQTT isConnected
- *  @param client - the client object to use
- *  @return truth value indicating whether the client is connected to the server
- */
-//DLLExport int MQTTIsConnected(MQTTClient* client)
-//{
-//  return client->isconnected;
-//}
-
-#if defined(MQTT_TASK)
-/** MQTT start background thread for a client.  After this, MQTTYield should not be called.
-*  @param client - the client object to use
-*  @return success code
-*/
-DLLExport int MQTTStartTask(MQTTClient* client);
-#endif
->>>>>>> parent of 18aad25... 基本实现mqtt系统函数发布消息
-=======
 #define DefaultClient {0, 0, 0, 0, NULL, NULL, 0, 0, 0}
->>>>>>> parent of 104ec5b... 移植其他mqtt客户端
 
 
 /**
