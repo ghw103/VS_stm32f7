@@ -22,19 +22,16 @@ int ThreadStart(Thread* thread, void (*fn)(void*), void* arg)
 {
 	int rc = 0;
 	uint16_t usTaskStackSize = (configMINIMAL_STACK_SIZE * 5);
-//	UBaseType_t uxTaskPriority = uxTaskPriorityGet(NULL); /* set the priority as the same as the calling task*/
-//
-//	rc = xTaskCreate(fn,	/* The function that implements the task. */
-//		"MQTTTask",			/* Just a text name for the task to aid debugging. */
-//		usTaskStackSize,	/* The stack size is defined in FreeRTOSIPConfig.h. */
-//		arg,				/* The task parameter, not used in this case. */
-//		uxTaskPriority,		/* The priority assigned to the task is defined in FreeRTOSConfig.h. */
-//		&thread->task);		/* The task handle is not used. */
-//
-//	return rc;
-//	
-	const osThreadDef_t os_thread_def = { "MQTTTask", (os_pthread)fn, osPriorityAboveNormal, 0, usTaskStackSize };
-	return osThreadCreate(&os_thread_def, arg);
+	UBaseType_t uxTaskPriority = uxTaskPriorityGet(NULL); /* set the priority as the same as the calling task*/
+
+	rc = xTaskCreate(fn,	/* The function that implements the task. */
+		"MQTTTask",			/* Just a text name for the task to aid debugging. */
+		usTaskStackSize,	/* The stack size is defined in FreeRTOSIPConfig.h. */
+		arg,				/* The task parameter, not used in this case. */
+		uxTaskPriority,		/* The priority assigned to the task is defined in FreeRTOSConfig.h. */
+		&thread->task);		/* The task handle is not used. */
+
+	return rc;
 }
 
 
@@ -56,11 +53,8 @@ int MutexUnlock(Mutex* mutex)
 
 void TimerCountdownMS(Timer* timer, unsigned int timeout_ms)
 {
-	portTickType now = xTaskGetTickCount();
-	
-	timer->xTimeOut = now + timeout_ms / portTICK_RATE_MS;
-//	timer->xTicksToWait = timeout_ms / portTICK_PERIOD_MS; /* convert milliseconds to ticks */
-	//vTaskSetTimeOutState(&timer->xTimeOut); /* Record the time at which this function was entered. */
+	timer->xTicksToWait = timeout_ms / portTICK_PERIOD_MS; /* convert milliseconds to ticks */
+	vTaskSetTimeOutState(&timer->xTimeOut); /* Record the time at which this function was entered. */
 }
 
 
@@ -128,9 +122,7 @@ int FreeRTOS_write(Network* n, unsigned char* buffer, int len, int timeout_ms)
 		int rc = 0;
 
 		setsockopt(n->my_socket, 0, SO_RCVTIMEO, &xTicksToWait, sizeof(xTicksToWait));
-	rc = send(n->my_socket, buffer + sentLen, len - sentLen, 0);
-		//rc = write(n->my_socket, buffer + sentLen, len - sentLen);
-		
+		rc = send(n->my_socket, buffer + sentLen, len - sentLen, 0);
 		if (rc > 0)
 			sentLen += rc;
 		else if (rc < 0)
@@ -160,8 +152,7 @@ void NetworkInit(Network* n)
 
 
 int NetworkConnect(Network* n, char* addr, int port)
-{
-	int type = SOCK_STREAM;
+{	int type = SOCK_STREAM;
 	struct sockaddr_in address;
 	int rc = -1;
 	sa_family_t family = AF_INET;
@@ -188,12 +179,12 @@ int NetworkConnect(Network* n, char* addr, int port)
 		}
 		if (result->ai_family == AF_INET)
 		{
-			address.sin_port = ((struct sockaddr_in*)(result->ai_addr))->sin_port;    // htons(port);
+			address.sin_port = ((struct sockaddr_in*)(result->ai_addr))->sin_port;     // htons(port);
 			address.sin_family = family = AF_INET;
 			address.sin_addr = ((struct sockaddr_in*)(result->ai_addr))->sin_addr;
 		}
 		else
-		rc = -1;
+			rc = -1;
 		freeaddrinfo(result);
 	}
 	if (rc == 0)
@@ -205,9 +196,6 @@ int NetworkConnect(Network* n, char* addr, int port)
 				rc = connect(n->my_socket, (struct sockaddr*)&address, sizeof(address));
 		}
 	}
-	tv.tv_sec = 1; /* 1 second Timeout */
-	tv.tv_usec = 0;  
-	setsockopt(n->my_socket, SOL_SOCKET, SO_RCVTIMEO, (char *)&tv, sizeof(struct timeval));
 #ifdef USE_LCD 
 	uint8_t iptxt[20];
 	sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&address.sin_addr));

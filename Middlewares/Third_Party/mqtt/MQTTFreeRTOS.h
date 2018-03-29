@@ -13,9 +13,8 @@
  * Contributors:
  *    Allan Stockdill-Mander - initial API and implementation and/or initial documentation
  *******************************************************************************/
-
-#if !defined(MQTTFreeRTOS_H)
-#define MQTTFreeRTOS_H
+#ifndef _MQTTFreeRTOS_H
+#define _MQTTFreeRTOS_H
 
 #include "FreeRTOS.h"
 #include "lwip/sockets.h"
@@ -26,6 +25,7 @@
 #include "semphr.h"
 #include "task.h"
 
+typedef void *xSocket_t;
 typedef struct Timer 
 {
 	TickType_t xTicksToWait;
@@ -36,7 +36,7 @@ typedef struct Network Network;
 
 struct Network
 {
-	int my_socket;
+	xSocket_t my_socket;
 	int (*mqttread) (Network*, unsigned char*, int, int);
 	int (*mqttwrite) (Network*, unsigned char*, int, int);
 	void (*disconnect) (Network*);

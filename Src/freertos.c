@@ -181,8 +181,8 @@ void MX_FREERTOS_Init(void) {
   TempHandle = osThreadCreate(osThread(Temp), NULL);
 
   /* definition and creation of MQTT_Client */
-  osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
-  MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
+//  osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
+//  MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
 
   /* definition and creation of mqtt_run */
   osThreadDef(mqtt_run, mqtt_run_Task, osPriorityIdle, 0, 128);
@@ -252,17 +252,14 @@ void DHCP_Task(void const * argument)
 #ifdef USE_LCD
 				printf("Looking for DHCP server ...\n");
 #endif
-
 			}
 			break;
 
 		case DHCP_WAIT_ADDRESS:
 			{
-
 				if (dhcp_supplied_address(netif))
 				{
 					DHCP_state = DHCP_ADDRESS_ASSIGNED;
-
 #ifdef USE_LCD
 					sprintf((char *)iptxt, "%s", ip4addr_ntoa((const ip4_addr_t *)&netif->ip_addr));
 					printf("IP address assigned by a DHCP server: %s\n", iptxt);
@@ -278,7 +275,6 @@ void DHCP_Task(void const * argument)
 												if(dhcp->tries > MAX_DHCP_TRIES)
 					{
 						DHCP_state = DHCP_TIMEOUT;
-
 						/* Stop DHCP */
 						dhcp_stop(netif);
 						/* Static address used */
@@ -301,7 +297,7 @@ void DHCP_Task(void const * argument)
 		case DHCP_ADDRESS_ASSIGNED:
 			{
 				/* definition and creation of MQTT_ClientTask */
-				osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityAboveNormal, 0, 1024);
+				osThreadDef(MQTT_Client, MQTT_Client_Task, osPriorityHigh, 0, 1024);
 				MQTT_ClientHandle = osThreadCreate(osThread(MQTT_Client), NULL);
 				BSP_LED_Off(LED_RED);
 				vTaskDelete(NULL);  
@@ -327,9 +323,12 @@ void LED_Task(void const * argument)
 {
   /* USER CODE BEGIN LED_Task */
   /* Infinite loop */
+
   for(;;)
   {
+	
 	  BSP_LED_Toggle(LED_RED);
+	 // printf("h\r\n");
     osDelay(1000);
   }
   /* USER CODE END LED_Task */
@@ -363,6 +362,15 @@ void MQTT_Client_Task(void const * argument)
 {
   /* USER CODE BEGIN MQTT_Client_Task */
   /* Infinite loop */
+	MQTTMessage message;
+	    char payload[30];
+		message.qos = 2;
+		message.retained = 0;
+		sprintf(payload, "message number %d",123);
+		message.payloadlen = strlen(payload);
+		message.payload = payload;
+	
+	
 	MQTTClient client;
 	Network network;
 	unsigned char sendbuf[80], readbuf[80];
@@ -374,8 +382,10 @@ void MQTT_Client_Task(void const * argument)
 	NetworkInit(&network);
 	MQTTClientInit(&client, &network, 30000, sendbuf, sizeof(sendbuf), readbuf, sizeof(readbuf));
 
-	char* address = "66.154.108.162";
-//	char* address = "192.168.100.17";
+		char* address = "66.154.108.162";
+	//	char* address = "192.168.100.17";
+//		char* address = "176.122.166.83";
+	
 	char* port= "1883";
 	if ((rc = NetworkConnect(&network, address, port)) != 0)
 		printf("Return code from network connect is %d\n", rc);
@@ -398,23 +408,25 @@ void MQTT_Client_Task(void const * argument)
 
 		if ((rc = MQTTSubscribe(&client, "temperaturesensor", 2, messageArrived)) != 0)
 		printf("Return code from MQTT subscribe is %d\n", rc);
+			if ((rc = MQTTPublish(&client, "temperaturesensor", &message)) != 0)
+			printf("Return code from MQTT publish is %d\n", rc);
 	for(;;)
 	{
-		osDelay(1);
-//		MQTTMessage message;
-//		char payload[30];
-//		++count;
-//		message.qos = 2;
-//		message.retained = 0;
-//		sprintf(payload, "message number %d", count);
-//		message.payloadlen = strlen(payload);
-//		message.payload = payload;
-//		if ((rc = MQTTPublish(&client, "temperaturesensor", &message)) != 0)
-//			printf("Return code from MQTT publish is %d\n", rc);
-//#if !defined(MQTT_TASK)
-//		if((rc = MQTTYield(&client, 1000)) != 0)
-//			printf("Return code from yield is %d\n", rc);
-//#endif
+//		osDelay(1);
+////		MQTTMessage message;
+////		char payload[30];
+////		++count;
+////		message.qos = 2;
+////		message.retained = 0;
+////		sprintf(payload, "message number %d", count);
+////		message.payloadlen = strlen(payload);
+////		message.payload = payload;
+////		if ((rc = MQTTPublish(&client, "temperaturesensor", &message)) != 0)
+////			printf("Return code from MQTT publish is %d\n", rc);
+#if !defined(MQTT_TASK)
+		if((rc = MQTTYield(&client, 1000)) != 0)
+			printf("Return code from yield is %d\n", rc);
+#endif
 	}
   /* USER CODE END MQTT_Client_Task */
 }
@@ -426,7 +438,10 @@ void mqtt_run_Task(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+//	  cycle(c, &timer);
+//	   int len = MQTTSerialize_pingreq(c->buf, c->buf_size);
+//	  if (len > 0 && (rc = sendPacket(c, len, &timer)) == uSUCCESS) // send the ping packet
+    osDelay(20000);
   }
   /* USER CODE END mqtt_run_Task */
 }
